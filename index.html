@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaskFlow Dynamics | Public Works Document Controls</title>
+  <meta name="description" content="TaskFlow Dynamics provides LAUSD-style public works document controls: submittals, RFCs, inspection requests, OEHS coordination, 4-week look-aheads, and progressive closeout tracking." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#101a2e;
+      --card2:#0f172a;
+      --text:#eaf0ff;
+      --muted:#b8c3e6;
+      --line:rgba(255,255,255,.10);
+      --accent:#77a7ff;
+      --accent2:#7dffc2;
+      --warn:#ffd27a;
+      --bad:#ff7a7a;
+
+      --ns:#6b7280;    /* not started */
+      --ip:#3b82f6;    /* in progress */
+      --sub:#f59e0b;   /* submitted/in review */
+      --ap:#10b981;    /* approved */
+      --rej:#ef4444;   /* revise/rejected */
+      --hold:#a78bfa;  /* on hold */
+    }
+
+    /* Light mode overrides */
+    body.light{
+      --bg:#f5f7ff;
+      --card:#ffffff;
+      --card2:#ffffff;
+      --text:#0b1220;
+      --muted:#334155;
+      --line:rgba(2,6,23,.12);
+      background: var(--bg) !important;
+    }
+    body.light .callout{
+      background: rgba(245, 158, 11, .10);
+      border-color: rgba(245, 158, 11, .30);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(1200px 700px at 15% -10%, rgba(119,167,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 95% 0%, rgba(125,255,194,.14), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+
+    a{color:var(--text); text-decoration:none}
+    body.light a{color:#0b1220}
+    .wrap{max-width:1180px;margin:0 auto;padding:26px 16px 72px}
+
+    header{
+      position:sticky; top:0; z-index:50;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:12px 0 14px;
+      border-bottom:1px solid var(--line);
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,18,32,.90), rgba(11,18,32,.40));
+    }
+    body.light header{
+      background: rgba(245,247,255,.80);
+    }
+
+    .brand{display:flex; gap:12px; align-items:center}
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(119,167,255,.95), rgba(125,255,194,.78));
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+    }
+    .brand h1{margin:0;font-size:16px; letter-spacing:.25px}
+    .brand p{margin:0; font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:10px;
+      border:1px solid transparent;
+    }
+    nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.06)}
+    body.light nav a:hover{color:#0b1220; background:rgba(2,6,23,.05)}
+
+    .topRight{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px; border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      font-size:13px; color:var(--text);
+      cursor:pointer;
+      user-select:none;
+    }
+    body.light .btn{background: rgba(2,6,23,.04); color:#0b1220}
+    .btn.primary{
+      border-color:transparent;
+      background: linear-gradient(135deg, rgba(119,167,255,.95), rgba(125,255,194,.72));
+      color:#06101c;
+      font-weight:750;
+    }
+    .btn:hover{transform: translateY(-1px)}
+
+    .gridHero{
+      display:grid; grid-template-columns: 1.3fr .7fr;
+      gap:14px; padding:24px 0 8px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border-radius:18px;
+      padding:18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+    }
+    body.light .card{
+      background: var(--card);
+      box-shadow: 0 12px 28px rgba(2,6,23,.08);
+    }
+
+    .heroTitle{font-size:38px; line-height:1.05; margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .heroP{margin:0 0 14px; font-size:16px}
+
+    .pills{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .pill{
+      font-size:12px; padding:7px 10px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    body.light .pill{background: rgba(2,6,23,.04)}
+
+    h2{margin:0 0 10px; font-size:20px}
+    h3{margin:0 0 8px; font-size:16px}
+    section{margin-top:14px}
+
+    .kpiGrid{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .kpi{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(0,0,0,.14);
+    }
+    body.light .kpi{background: rgba(2,6,23,.03)}
+    .kpi b{display:block;font-size:18px}
+    .kpi span{display:block;font-size:12px;color:var(--muted)}
+
+    .callout{
+      border:1px solid rgba(255,210,122,.25);
+      background: rgba(255,210,122,.06);
+      border-radius:16px;
+      padding:14px;
+      margin-top:12px;
+    }
+    .callout b{color:var(--warn)}
+
+    .tableWrap{
+      margin-top:12px;
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.14);
+    }
+    body.light .tableWrap{background: rgba(2,6,23,.02)}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:980px;
+      font-size:13px;
+    }
+    thead th{
+      text-align:left;
+      padding:10px 10px;
+      background: rgba(17,26,46,.92);
+      color: var(--text);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      position:sticky; top:0;
+    }
+    body.light thead th{
+      background:#0b1220;
+      color:#ffffff;
+    }
+    tbody td{
+      padding:9px 10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: rgba(15,23,42,.72);
+      vertical-align:top;
+    }
+    body.light tbody td{
+      background:#ffffff;
+      border-bottom:1px solid rgba(2,6,23,.10);
+      color:#0b1220;
+    }
+    tbody tr:hover td{background: rgba(22,33,58,.88)}
+    body.light tbody tr:hover td{background: rgba(2,6,23,.03)}
+
+    .status{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    body.light .status{border-color: rgba(2,6,23,.12)}
+    .dot{width:8px; height:8px; border-radius:99px; background:var(--ns)}
+    .s-ns .dot{background:var(--ns)} .s-ip .dot{background:var(--ip)}
+    .s-sub .dot{background:var(--sub)} .s-ap .dot{background:var(--ap)}
+    .s-rej .dot{background:var(--rej)} .s-hold .dot{background:var(--hold)}
+
+    .badge{
+      font-size:11px; padding:4px 8px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      white-space:nowrap;
+    }
+    body.light .badge{
+      border-color: rgba(2,6,23,.12);
+      background: rgba(2,6,23,.03);
+      color: #334155;
+    }
+
+    .docGrid{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    .doc{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.14);
+      border-radius:16px;
+      padding:14px;
+    }
+    body.light .doc{background: rgba(2,6,23,.02)}
+    .docTop{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
+    .doc h4{margin:0; font-size:14px}
+    .doc p{margin:8px 0 0; font-size:12px; color:var(--muted)}
+    .doc .meta{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px}
+    .doc .meta span{font-size:11px; color:var(--muted); border:1px solid rgba(255,255,255,.12); padding:4px 8px; border-radius:999px}
+    body.light .doc .meta span{border-color: rgba(2,6,23,.12); background: rgba(2,6,23,.02)}
+    .doc .miniBtn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:7px 10px; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04); font-size:12px; color:var(--text);
+      margin-top:12px;
+      cursor:pointer;
+    }
+    body.light .doc .miniBtn{
+      border-color: rgba(2,6,23,.12);
+      background: rgba(2,6,23,.04);
+      color:#0b1220;
+    }
+    .doc .miniBtn:hover{transform: translateY(-1px)}
+
+    /* Modal */
+    .modalOverlay{
+      display:none;
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.65);
+      z-index:1000;
+      padding:20px;
+    }
+    .modal{
+      max-width:980px;
+      margin:40px auto;
+      background: rgba(17,26,46,.98);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      box-shadow: 0 28px 80px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    body.light .modal{background:#ffffff; border-color: rgba(2,6,23,.12)}
+    .modalHeader{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.15);
+    }
+    body.light .modalHeader{background: rgba(2,6,23,.04); border-bottom-color: rgba(2,6,23,.10)}
+    .modalHeader b{font-size:14px}
+    .closeBtn{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding:7px 10px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:12px;
+    }
+    body.light .closeBtn{border-color: rgba(2,6,23,.12); background: rgba(2,6,23,.04); color:#0b1220}
+    .modalBody{padding:14px;}
+    pre{
+      margin:0;
+      white-space:pre-wrap;
+      font-size:12px;
+      line-height:1.45;
+      color:#e5e7eb;
+      background: rgba(0,0,0,.20);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      padding:12px;
+    }
+    body.light pre{
+      color:#0b1220;
+      background: rgba(2,6,23,.03);
+      border-color: rgba(2,6,23,.10);
+    }
+
+    footer{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    @media (max-width: 980px){
+      .gridHero{grid-template-columns:1fr}
+      .docGrid{grid-template-columns:1fr}
+      .heroTitle{font-size:32px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>TaskFlow Dynamics</h1>
+          <p>Public Works Document Management • LAUSD-style Compliance • Accountability</p>
+        </div>
+      </div>
+
+      <div class="topRight">
+        <nav>
+          <a href="#deliverables">Deliverables</a>
+          <a href="#submittals">Submittals</a>
+          <a href="#rfcs">RFCs</a>
+          <a href="#inspections">Inspection Requests</a>
+          <a href="#lookahead">4-Week Look Ahead</a>
+          <a href="#closeout">Closeout</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="btn" id="themeBtn" type="button">Toggle Light</button>
+      </div>
+    </header>
+
+    <div class="gridHero">
+      <div class="card">
+        <h2 class="heroTitle">We don’t “organize paperwork.”<br/>We run the <span style="color:var(--accent)">project record</span>.</h2>
+        <p class="heroP muted">
+          TaskFlow Dynamics provides LAUSD-style document controls that keep public works projects moving:
+          submittals, RFCs, inspection readiness (IOR workflows), OEHS coordination, 4-week look-aheads,
+          and progressive closeout tracking—so compliance is proactive, not reactive.
+        </p>
+
+<!-- UPGRADE BLOCK: OUTCOMES / WHO IT'S FOR / PACKAGES / ENGAGEMENT -->
+<section class="card" id="upgrade">
+
+  <!-- OUTCOMES -->
+  <h2>What this delivers</h2>
+  <p class="muted">
+    TaskFlow Dynamics turns documentation into a live control system that protects
+    schedule, inspections, and closeout — not paperwork that reacts after damage is done.
+  </p>
+
+  <div class="pills">
+    <span class="pill">Reduced approval backlog</span>
+    <span class="pill">Fewer failed / repeat inspections</span>
+    <span class="pill">Early visibility of OEHS & long-lead constraints</span>
+    <span class="pill">Audit-ready closeout with no scramble</span>
+    <span class="pill">Clear ownership & escalation</span>
+  </div>
+
+  <!-- WHO IT'S FOR -->
+  <div style="margin-top:18px">
+    <h3>Who this is for</h3>
+    <div class="docGrid">
+      <div class="doc">
+        <h4>Owners / OARs</h4>
+        <p>
+          Need confidence that documentation, inspections, and closeout are being
+          managed proactively — with clear reporting and defensible records.
+        </p>
+        <div class="meta">
+          <span>LAUSD / Public Works</span>
+          <span>Audit-ready</span>
+          <span>Executive reporting</span>
+        </div>
+      </div>
+
+      <div class="doc">
+        <h4>General Contractors</h4>
+        <p>
+          Facing submittal and RFC backlog, inspection delays, or closeout risk that
+          is quietly impacting the schedule.
+        </p>
+        <div class="meta">
+          <span>Backlog burn-down</span>
+          <span>Inspection readiness</span>
+          <span>Dispute prevention</span>
+        </div>
+      </div>
+
+      <div class="doc">
+        <h4>Program / Portfolio Teams</h4>
+        <p>
+          Managing multiple active projects that need standardized controls,
+          dashboards, and consistent closeout outcomes.
+        </p>
+        <div class="meta">
+          <span>Standardized systems</span>
+          <span>Weekly cadence</span>
+          <span>Scalable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PACKAGES -->
+  <div style="margin-top:22px">
+    <h3>Service packages</h3>
+
+    <div class="docGrid">
+      <div class="doc">
+        <div class="docTop">
+          <h4>Stabilize</h4>
+          <span class="status s-ip"><span class="dot"></span>2–4 weeks</span>
+        </div>
+        <p>
+          Rapid setup to regain control of a live project that’s experiencing
+          backlog, inspection risk, or documentation chaos.
+        </p>
+        <ul class="muted">
+          <li>Baseline submittal, RFC, IR, closeout logs</li>
+          <li>Backlog burn-down & prioritization</li>
+          <li>Deliverables Matrix setup</li>
+          <li>Immediate risk & constraint visibility</li>
+        </
+
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn primary" href="#contact">Request a Documentation Assessment</a>
+          <a class="btn" href="#deliverables">View Deliverables Matrix</a>
+        </div>
+
+        <div class="pills">
+          <span class="pill">Aging & Escalation</span>
+          <span class="pill">Audit-Ready Indexing</span>
+          <span class="pill">Weekly Dashboards</span>
+          <span class="pill">Owner / Contractor Alignment</span>
+          <span class="pill">Progressive Closeout</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>What we stabilize</h2>
+        <div class="kpiGrid">
+          <div class="kpi"><b>Approvals</b><span>Submittals + RFCs tracked & aged</span></div>
+          <div class="kpi"><b>Readiness</b><span>Inspections prepared and documented</span></div>
+          <div class="kpi"><b>Constraints</b><span>OEHS / long-lead items surfaced early</span></div>
+          <div class="kpi"><b>Closeout</b><span>Turnover built during construction</span></div>
+        </div>
+        <div class="callout">
+          <b>Public works reality:</b> documentation is schedule-critical. We make it visible, owned, and controlled.
+        </div>
+      </div>
+    </div>
+
+    <!-- DELIVERABLES MATRIX -->
+    <section id="deliverables" class="card">
+      <h2>Deliverables Matrix</h2>
+      <p class="muted">
+        Master accountability: <b>what</b> is required, <b>who owns it</b>, <b>who approves it</b>, <b>when it’s due</b>, and <b>what it impacts</b>.
+        Updated weekly to drive escalation and protect the field.
+      </p>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>ID</th>
+              <th>Deliverable</th>
+              <th>Owner</th>
+              <th>Reviewer / Authority</th>
+              <th>Due Trigger</th>
+              <th>Impact</th>
+              <th>Status</th>
+              <th>Aging</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge">Submittal</span></td>
+              <td>SUB-014</td>
+              <td>Anti-Graffiti Coating Package (Data Sheets, Samples, VOC, Warranty)</td>
+              <td>GC / Vendor</td>
+              <td>A/E + Owner</td>
+              <td>Prior to installation</td>
+              <td>Field release</td>
+              <td><span class="status s-sub"><span class="dot"></span>Submitted</span></td>
+              <td>9 days</td>
+            </tr>
+            <tr>
+              <td><span class="badge">RFC</span></td>
+              <td>RFC-006</td>
+              <td>Scoreboard embed pattern clarification (anchor layout & edge distance)</td>
+              <td>GC</td>
+              <td>A/E + Owner</td>
+              <td>Field conflict identified</td>
+              <td>Prevent rework</td>
+              <td><span class="status s-ip"><span class="dot"></span>In Progress</span></td>
+              <td>6 days</td>
+            </tr>
+            <tr>
+              <td><span class="badge">Inspection</span></td>
+              <td>IR-033</td>
+              <td>Special Inspector – Structural steel welds (scoreboard frame)</td>
+              <td>GC</td>
+              <td>Special Inspector</td>
+              <td>Pre-weld / during weld</td>
+              <td>Pass inspection</td>
+              <td><span class="status s-sub"><span class="dot"></span>Submitted</span></td>
+              <td>3 days</td>
+            </tr>
+            <tr>
+              <td><span class="badge">OEHS</span></td>
+              <td>OEHS-003</td>
+              <td>Clearance documentation – area release (as applicable)</td>
+              <td>Consultant</td>
+              <td>OEHS</td>
+              <td>Area completion</td>
+              <td>Access / release</td>
+              <td><span class="status s-ns"><span class="dot"></span>Not Started</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><span class="badge">Closeout</span></td>
+              <td>CO-011</td>
+              <td>O&M + Warranty Matrix (electrical, scoreboard, turf, irrigation)</td>
+              <td>Vendors</td>
+              <td>Owner</td>
+              <td>System startup</td>
+              <td>Turnover</td>
+              <td><span class="status s-ip"><span class="dot"></span>In Progress</span></td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SUBMITTALS -->
+    <section id="submittals" class="card">
+      <h2>Submittals Log</h2>
+      <p class="muted">
+        Original submit dates, routing, responses, resubmittals, and release rules that protect inspections and installation.
+      </p>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Submittal #</th>
+              <th>Spec</th>
+              <th>Title</th>
+              <th>Submitted</th>
+              <th>Due Back</th>
+              <th>Reviewer</th>
+              <th>Disposition</th>
+              <th>Resub?</th>
+              <th>Notes / Next Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SUB-014</td>
+              <td>09 96 23</td>
+              <td>Anti-Graffiti Coating + Water Repellent (Product Data, VOC, Warranty)</td>
+              <td>01/16/2026</td>
+              <td>01/30/2026</td>
+              <td>A/E + Owner</td>
+              <td><span class="status s-sub"><span class="dot"></span>Submitted</span></td>
+              <td>Likely</td>
+              <td>Awaiting comments. Prepare alternate product cut sheets.</td>
+            </tr>
+            <tr>
+              <td>SUB-019</td>
+              <td>32 18 13</td>
+              <td>Synthetic Turf System (seams, infill, shockpad, warranty, installer cert)</td>
+              <td>01/10/2026</td>
+              <td>01/24/2026</td>
+              <td>A/E</td>
+              <td><span class="status s-rej"><span class="dot"></span>Revise</span></td>
+              <td>Yes</td>
+              <td>Resubmit with shockpad data + corrected warranty terms.</td>
+            </tr>
+            <tr>
+              <td>SUB-022</td>
+              <td>26 05 00</td>
+              <td>Conduit, pull boxes, wire, labels (material + installation details)</td>
+              <td>01/06/2026</td>
+              <td>01/20/2026</td>
+              <td>A/E</td>
+              <td><span class="status s-ap"><span class="dot"></span>Approved</span></td>
+              <td>No</td>
+              <td>Released for procurement and installation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="docGrid">
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>SUB-014 Cover Sheet + Compliance Checklist</h4>
+              <p>Routing cover, spec reference, and reviewer checklist to speed disposition.</p>
+            </div>
+            <span class="status s-sub"><span class="dot"></span>Submitted</span>
+          </div>
+          <div class="meta">
+            <span>Spec: 09 96 23</span><span>Turnaround: 10 days</span><span>Escalation: Day 12</span>
+          </div>
+          <button class="miniBtn" data-doc="sub014">Preview sample</button>
+        </div>
+
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>SUB-019 Resubmittal Plan</h4>
+              <p>Comment consolidation + responsibility assignment + target dates.</p>
+            </div>
+            <span class="status s-rej"><span class="dot"></span>Revise</span>
+          </div>
+          <div class="meta">
+            <span>Risk: Schedule</span><span>Target: 02/05/2026</span><span>Owner: GC/Vendor</span>
+          </div>
+          <button class="miniBtn" data-doc="sub019">Preview sample</button>
+        </div>
+
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>Weekly Submittal Dashboard</h4>
+              <p>Aging, stuck items, and releases tied to field activities.</p>
+            </div>
+            <span class="status s-ip"><span class="dot"></span>Active</span>
+          </div>
+          <div class="meta">
+            <span>Metric: Aging</span><span>Cadence: Weekly</span><span>Audience: Owner/OAR</span>
+          </div>
+          <button class="miniBtn" data-doc="subdash">Preview sample</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RFCs -->
+    <section id="rfcs" class="card">
+      <h2>RFC Log</h2>
+      <p class="muted">
+        Field conflicts resolved before they become rework: clear questions, exhibits, due dates, and decision tracking.
+      </p>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>RFC #</th>
+              <th>Subject</th>
+              <th>Submitted</th>
+              <th>Due</th>
+              <th>Assigned To</th>
+              <th>Status</th>
+              <th>Decision / Direction</th>
+              <th>Next Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RFC-006</td>
+              <td>Scoreboard foundation embed pattern vs. sheet S-502</td>
+              <td>01/24/2026</td>
+              <td>02/03/2026</td>
+              <td>A/E</td>
+              <td><span class="status s-ip"><span class="dot"></span>In Progress</span></td>
+              <td>Pending A/E response</td>
+              <td>Expedite due to pour window 02/05.</td>
+            </tr>
+            <tr>
+              <td>RFC-008</td>
+              <td>Track drainage tie-in detail at infiltration box</td>
+              <td>01/18/2026</td>
+              <td>01/28/2026</td>
+              <td>A/E</td>
+              <td><span class="status s-sub"><span class="dot"></span>Submitted</span></td>
+              <td>Pending</td>
+              <td>Escalate if no response by 01/31.</td>
+            </tr>
+            <tr>
+              <td>RFC-009</td>
+              <td>Fence gate hardware – alternate equal clarification</td>
+              <td>01/12/2026</td>
+              <td>01/22/2026</td>
+              <td>A/E + Owner</td>
+              <td><span class="status s-ap"><span class="dot"></span>Approved</span></td>
+              <td>Approved as noted</td>
+              <td>Release for procurement; file decision in register.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="docGrid">
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>RFC Exhibit Pack Template</h4>
+              <p>Photo + plan snippet + narrative + proposed fix to eliminate ambiguity.</p>
+            </div>
+            <span class="status s-ip"><span class="dot"></span>Standard</span>
+          </div>
+          <div class="meta">
+            <span>Includes: Markups</span><span>Includes: Photos</span><span>Includes: Proposed solution</span>
+          </div>
+          <button class="miniBtn" data-doc="rfcpack">Preview sample</button>
+        </div>
+
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>RFC Aging Report</h4>
+              <p>Escalation thresholds (Day 10 / Day 14) + executive summary.</p>
+            </div>
+            <span class="status s-sub"><span class="dot"></span>Tracked</span>
+          </div>
+          <div class="meta">
+            <span>Escalate: Day 10</span><span>Escalate: Day 14</span><span>Owner: OAR/PM</span>
+          </div>
+          <button class="miniBtn" data-doc="rfcaging">Preview sample</button>
+        </div>
+
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>Decision Register</h4>
+              <p>Captures direction for defensibility and dispute prevention.</p>
+            </div>
+            <span class="status s-ip"><span class="dot"></span>Active</span>
+          </div>
+          <div class="meta">
+            <span>Source: RFCs</span><span>Source: Minutes</span><span>Audit-ready</span>
+          </div>
+          <button class="miniBtn" data-doc="decision">Preview sample</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSPECTION REQUESTS -->
+    <section id="inspections" class="card">
+      <h2>DSA / IOR Inspection Requests</h2>
+      <p class="muted">
+        Prerequisites verified, inspection requests logged, results documented, and re-inspections tracked to closure.
+      </p>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>IR #</th>
+              <th>Inspection Type</th>
+              <th>Location / Scope</th>
+              <th>Requested</th>
+              <th>Needed By</th>
+              <th>Prereqs Verified</th>
+              <th>Status</th>
+              <th>Result</th>
+              <th>Notes / Corrective</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>IR-021</td>
+              <td>IOR Rebar</td>
+              <td>Footings – scoreboard / fence / track perimeter</td>
+              <td>01/20/2026</td>
+              <td>01/22/2026</td>
+              <td><span class="badge">Yes</span></td>
+              <td><span class="status s-ap"><span class="dot"></span>Approved</span></td>
+              <td><span class="badge">Pass</span></td>
+              <td>Pour authorized. Photos filed with inspection record.</td>
+            </tr>
+            <tr>
+              <td>IR-028</td>
+              <td>IOR Concrete Placement</td>
+              <td>Track curb &amp; gutter – Segment A</td>
+              <td>01/27/2026</td>
+              <td>01/29/2026</td>
+              <td><span class="badge">Partial</span></td>
+              <td><span class="status s-ip"><span class="dot"></span>Pending</span></td>
+              <td><span class="badge">—</span></td>
+              <td>Waiting on mix design approval SUB-031.</td>
+            </tr>
+            <tr>
+              <td>IR-033</td>
+              <td>Special Inspector</td>
+              <td>Structural steel – scoreboard frame welds</td>
+              <td>01/30/2026</td>
+              <td>02/03/2026</td>
+              <td><span class="badge">Yes</span></td>
+              <td><span class="status s-sub"><span class="dot"></span>Submitted</span></td>
+              <td><span class="badge">—</span></td>
+              <td>Confirm inspector availability; lock schedule window.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="docGrid">
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>Inspection Readiness Checklist</h4>
+              <p>Prereqs: approved submittals, tests, embeds, access, safety, exhibits.</p>
+            </div>
+            <span class="status s-ip"><span class="dot"></span>Standard</span>
+          </div>
+          <div class="meta">
+            <span>Stops: Failed inspections</span><span>Supports: IOR</span><span>Cadence: Daily</span>
+          </div>
+          <button class="miniBtn" data-doc="ircheck">Preview sample</button>
+        </div>
+
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>Inspection Photo Index</h4>
+              <p>Photos tied to IR # and date for traceability.</p>
+            </div>
+            <span class="status s-ap"><span class="dot"></span>Controlled</span>
+          </div>
+          <div class="meta">
+            <span>Naming: IR-###</span><span>Folder: /Inspections</span><span>Audit-ready</span>
+          </div>
+          <button class="miniBtn" data-doc="photoindex">Preview sample</button>
+        </div>
+
+        <div class="doc">
+          <div class="docTop">
+            <div>
+              <h4>Re-Inspection Tracker</h4>
+              <p>Deficiencies assigned, dated, and closed with evidence.</p>
+            </div>
+            <span class="status s-ip"><span class="dot"></span>Active</span>
+          </div>
+          <div class="meta">
+            <span>Owner: GC</span><span>Verify: Inspector</span><span>Close: Evidence</span>
+          </div>
+          <button class="miniBtn" data-doc="reinspect">Preview sample</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 WEEK LOOK AHEAD -->
+    <section id="lookahead" class="card">
+      <h2>4-Week Look Ahead</h2>
+      <p class="muted">
+        Look-ahead tied to documentation constraints (submittals, RFCs, inspections, OEHS) so the schedule is buildable.
+      </p>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Planned Work</th>
+              <th>Prereqs / Constraints</th>
+              <th>Responsible</th>
+              <th>Risk</th>
+              <th>Action / Escalation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Week 1 (02/03–02/07)</td>
+              <td>Scoreboard foundations: form, rebar, embeds, pour</td>
+              <td>RFC-006 decision; IR-033 inspector availability</td>
+              <td>GC</td>
+              <td><span class="badge" style="color:var(--warn)">Medium</span></td>
+              <td>Escalate RFC if no response by 02/03 AM</td>
+            </tr>
+            <tr>
+              <td>Week 2 (02/10–02/14)</td>
+              <td>Track base prep + drainage tie-in</td>
+              <td>RFC-008 response; compaction test scheduling</td>
+              <td>GC / Testing Lab</td>
+              <td><span class="badge" style="color:var(--bad)">High</span></td>
+              <td>Advance lab request; confirm detail by 02/07</td>
+            </tr>
+            <tr>
+              <td>Week 3 (02/18–02/21)</td>
+              <td>Turf mobilization + staging</td>
+              <td>SUB-019 approval; delivery dates confirmed</td>
+              <td>Vendor</td>
+              <td><span class="badge" style="color:var(--warn)">Medium</span></td>
+              <td>Resubmit SUB-019 by 02/05; track response due 02/12</td>
+            </tr>
+            <tr>
+              <td>Week 4 (02/24–02/28)</td>
+              <td>Striping + punchlist progress</td>
+              <td>SUB-027 approval; weather window; campus access</td>
+              <td>GC</td>
+              <td><span class="badge" style="color:var(--accent)">Low</span></td>
+              <td>Confirm cure times and access with site admin</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CLOSEOUT -->
+    <section id="closeout" class="card">
+      <h2>Progressive Closeout Tracker</h2>
+      <p class="muted">
+        Closeout is tracked during construction so turnover is administrative, not corrective. Deliverables are owned, dated, and evidenced.
+      </p>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Closeout ID</th>
+              <th>Deliverable</th>
+              <th>Owner</th>
+              <th>Due Trigger</th>
+              <th>Status</th>
+              <th>Evidence / Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CO-011</td>
+              <td>O&amp;M Manuals (Electrical / Scoreboard / Turf / Irrigation)</td>
+              <td>Vendors</td>
+              <td>System startup</td>
+              <td><span class="status s-ip"><span class="dot"></span>In Progress</span></td>
+              <td>SharePoint / Closeout / O&amp;M</td>
+              <td>Collect drafts by trade; index by system.</td>
+            </tr>
+            <tr>
+              <td>CO-014</td>
+              <td>Warranty Matrix + Contacts</td>
+              <td>GC</td>
+              <td>Substantial completion</td>
+              <td><span class="status s-sub"><span class="dot"></span>Submitted</span></td>
+              <td>SharePoint / Closeout / Warranties</td>
+              <td>Verify term alignment with submittals.</td>
+            </tr>
+            <tr>
+              <td>CO-018</td>
+              <td>Training Logs + Sign-In Sheets</td>
+              <td>Vendors</td>
+              <td>Turnover / training</td>
+              <td><span class="status s-ns"><span class="dot"></span>Not Started</span></td>
+              <td>SharePoint / Closeout / Training</td>
+              <td>Assign dates and attendees early.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p class="muted">
+        If your project is experiencing RFC backlog, inspection delays, OEHS constraints, or closeout risk,
+        TaskFlow Dynamics can stabilize your documentation controls fast.
+      </p>
+
+      <p style="margin-top:12px">
+        <b>Luis Joaquin Colondres</b><br/>
+        TaskFlow Dynamics<br/><br/>
+        📧 <a href="mailto:ljc@colondresdev.com">ljc@colondresdev.com</a><br/>
+        📞 661-383-6372<br/>
+        🔗 <a href="https://www.linkedin.com/in/luis-joaquin-colondres-50364328" target="_blank" rel="noopener">LinkedIn Profile</a><br/>
+        📍 Southern California (Remote support available)
+      </p>
+    </section>
+
+    <footer>
+      © <span id="y"></span> TaskFlow Dynamics • Public Works Document Management
+    </footer>
+
+  </div>
+
+  <!-- MODAL -->
+  <div class="modalOverlay" id="modalOverlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modalHeader">
+        <b id="modalTitle">Document Preview</b>
+        <button class="closeBtn" id="closeBtn" type="button">Close</button>
+      </div>
+      <div class="modalBody">
+        <pre id="modalContent"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Light/dark toggle
+    const themeBtn = document.getElementById("themeBtn");
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      themeBtn.textContent = document.body.classList.contains("light") ? "Toggle Dark" : "Toggle Light";
+    });
+
+    // Modal previews (sample “documents”)
+    const docs = {
+      sub014:
+`TASKFLOW DYNAMICS — SUBMITTAL COVER SHEET (SAMPLE)
+Submittal No.: SUB-014
+Spec Section: 09 96 23
+Title: Anti-Graffiti Coating + Water Repellent
+
+Included:
+- Product Data Sheets (manufacturer)
+- VOC / compliance statement
+- Application instructions
+- Warranty terms
+- Sample request / color schedule (as applicable)
+
+Routing:
+GC → OAR/Owner → A/E (Review) → Disposition → Release / Resubmit
+
+Notes:
+- Track review turnaround; escalate if aging exceeds agreed threshold.`,
+      sub019:
+`TASKFLOW DYNAMICS — RESUBMITTAL PLAN (SAMPLE)
+Submittal No.: SUB-019 (Synthetic Turf System)
+Disposition: Revise and Resubmit
+
+Comment Themes:
+1) Shockpad data missing (ASTM / performance)
+2) Warranty language inconsistent with spec
+3) Installer certification not included
+
+Action Plan:
+- Vendor provides shockpad technical data by 02/03
+- GC updates warranty terms and submits by 02/05
+- TFD verifies completeness + routes for review`,
+      subdash:
+`WEEKLY SUBMITTAL DASHBOARD (SAMPLE)
+Open: 12 | In Review: 5 | Revise/Resubmit: 3 | Approved: 21
+
+Top Constraints:
+- SUB-019 Turf approval impacts mobilization Week 3
+- SUB-014 Anti-graffiti impacts install release Week 2
+
+Escalations:
+- Items > 10 days in review: notify reviewer + PM
+- Items > 14 days in review: executive escalation`,
+      rfcpack:
+`RFC EXHIBIT PACK TEMPLATE (SAMPLE)
+RFC No.: RFC-006
+Subject: Embed pattern clarification — scoreboard foundation
+
+Attachments:
+- Photo(s) of field condition
+- Plan snippet / detail excerpt
+- Markup showing conflict
+- Proposed solution (constructability option)
+
+Purpose:
+Eliminate ambiguity and accelerate decision-making.`,
+      rfcaging:
+`RFC AGING REPORT (SAMPLE)
+Open RFCs: 7
+- Due in 48 hours: 2
+- Overdue: 1 (Escalation Level 1)
+- Overdue > 14 days: 0
+
+Escalation Rules:
+Day 10: notify reviewer + PM
+Day 14: executive escalation + schedule impact note`,
+      decision:
+`DECISION REGISTER (SAMPLE)
+Decision ID: DR-015
+Source: RFC-009
+Direction: Gate hardware approved-as-noted
+Date: 01/22/2026
+Impact: Procurement release
+Filed: /Decisions/DR-015.pdf`,
+      ircheck:
+`INSPECTION READINESS CHECKLIST (SAMPLE)
+Before requesting inspection:
+- Approved submittals on impacted scope
+- Required testing scheduled (if applicable)
+- Access / safety controls in place
+- Embeds verified
+- Exhibits / markups prepared
+- Inspector availability confirmed`,
+      photoindex:
+`INSPECTION PHOTO INDEX (SAMPLE)
+IR-021 | 01/22/2026 | Footings Rebar | Photos 001–014 | /Inspections/IR-021/`,
+      reinspect:
+`RE-INSPECTION TRACKER (SAMPLE)
+Item: Honeycomb at curb edge
+Owner: GC
+Corrective action: Chip + patch + finish
+Evidence: Photo + inspector note
+Status: Pending re-inspection`
+    };
+
+    const overlay = document.getElementById("modalOverlay");
+    const closeBtn = document.getElementById("closeBtn");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalContent = document.getElementById("modalContent");
+
+    document.querySelectorAll("[data-doc]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-doc");
+        modalTitle.textContent = "Document Preview: " + key.toUpperCase();
+        modalContent.textContent = docs[key] || "No preview available.";
+        overlay.style.display = "block";
+      });
+    });
+
+    function closeModal(){
+      overlay.style.display = "none";
+    }
+    closeBtn.addEventListener("click", closeModal);
+    overlay.addEventListener("click", (e) => {
+      if(e.target === overlay) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeModal();
+    });
+  </script>
+</body>
+</html>
