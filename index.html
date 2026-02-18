@@ -52,36 +52,14 @@
     .tableWrap{margin-top:12px;overflow:auto;border-radius:16px;border:1px solid var(--line);background:rgba(2,6,23,.02)}
     body.dark .tableWrap{background:rgba(0,0,0,.18)}
     table{width:100%;border-collapse:collapse;min-width:980px;font-size:13px}
-thead th{
-  text-align:left;
-  padding:10px 10px;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-
-  /* FIXED HEADER STYLE */
-  background: var(--card);
-  color: var(--text);
-  border-bottom: 1px solid var(--line);
-}
-
-/* Dark mode header */
-body.dark thead th{
-  background: rgba(17,26,46,.92);
-  color: #eaf0ff;
-}
-
-/* Light mode header */
-body.light thead th{
-  background: #ffffff;
-  color: #0b1220;
-}    tbody td{padding:9px 10px;border-bottom:1px solid rgba(2,6,23,.10);background:#ffffff;vertical-align:top}
+    thead th{text-align:left;padding:10px 10px;position:sticky;top:0;z-index:2;background:var(--card);color:var(--text);border-bottom:1px solid var(--line)}body.dark thead th{background:rgba(17,26,46,.92);color:#eaf0ff}body.light thead th{background:#ffffff;color:#0b1220}
+}   tbody td{padding:9px 10px;border-bottom:1px solid rgba(2,6,23,.10);background:#ffffff;vertical-align:top}
     body.dark tbody td{background:rgba(15,23,42,.82);border-bottom:1px solid rgba(255,255,255,.08);color:#e5e7eb}
     tbody tr:hover td{background:rgba(2,6,23,.03)} body.dark tbody tr:hover td{background:rgba(22,33,58,.92)}
     .status{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;border:1px solid rgba(2,6,23,.12);font-size:12px;white-space:nowrap}
     body.dark .status{border-color:rgba(255,255,255,.12)}
     .dot{width:8px;height:8px;border-radius:99px;background:var(--ns)}
-    .s-ns .dot{background:var(--ns)} .s-ip .dot{background:var(--ip)}
+    .s-ns .dot{background:var(--ns)} .s-ip .dot{background:var(--ip)}m
     .s-sub .dot{background:var(--sub)} .s-ap .dot{background:var(--ap)}
     .s-rej .dot{background:var(--rej)} .s-hold .dot{background:var(--hold)}
     .badge{font-size:11px;padding:4px 8px;border-radius:12px;border:1px solid rgba(2,6,23,.12);color:var(--muted);background:rgba(2,6,23,.03);white-space:nowrap}
@@ -681,6 +659,7 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
+
 
 
 
