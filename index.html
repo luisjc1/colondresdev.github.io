@@ -4,9 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TaskFlow Dynamics | Public Works Document Management</title>
-  <meta name="description" content="TaskFlow Dynamics provides LAUSD-style public works document controls: submittals, RFCs, inspection readiness, and closeout." />
-  <meta name="theme-color" content="#0b1220" />
-
   <style>
     :root{
       --bg:#f5f7ff; --card:#ffffff; --text:#0b1220; --muted:#334155; --line:rgba(2,6,23,.12);
@@ -21,60 +18,39 @@
     *{box-sizing:border-box}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);line-height:1.45;background:var(--bg)}
     a{color:var(--text);text-decoration:none}
-    a.underline{text-decoration:underline}
-
     .wrap{max-width:1180px;margin:0 auto;padding:22px 16px 72px}
     header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0 14px;border-bottom:1px solid var(--line);backdrop-filter:blur(10px);background:rgba(245,247,255,.90)}
     body.dark header{background:linear-gradient(to bottom, rgba(11,18,32,.90), rgba(11,18,32,.40))}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.75));box-shadow:0 18px 40px rgba(0,0,0,.18)}
+    .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.75))}
     .brand h1{margin:0;font-size:16px;letter-spacing:.25px}
     .brand p{margin:0;font-size:12px;color:var(--muted)}
-
-    nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    nav{display:flex;gap:10px}
     nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:10px}
-    nav a:hover{color:var(--text);background:rgba(2,6,23,.04)}
-
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(2,6,23,.04);font-size:13px;color:var(--text);cursor:pointer;white-space:nowrap}
-    .btn.primary{border-color:transparent;background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.80));color:#06101c;font-weight:750}
     
-    .gridHero{display:grid;grid-template-columns:1.25fr .75fr;gap:14px;padding:22px 0 8px}
-    .card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(2,6,23,.08)}
+    /* Updated Hero to Full Width */
+    .heroArea{padding:22px 0 8px}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:24px;box-shadow:0 12px 28px rgba(2,6,23,.08);margin-bottom:14px}
     
-    .heroTitle{font-size:38px;line-height:1.05;margin:0 0 10px}
+    .heroTitle{font-size:38px;line-height:1.05;margin:0 0 12px}
+    .heroP{margin:0 0 20px;font-size:16px;max-width:800px}
     .muted{color:var(--muted)}
-    .heroP{margin:0 0 14px;font-size:16px}
+    
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:rgba(2,6,23,.04);font-size:13px;color:var(--text);cursor:pointer;font-weight:600}
+    .btn.primary{border-color:transparent;background:linear-gradient(135deg, #2f6fff, #10b981);color:#fff}
 
-    h2{margin:0 0 10px;font-size:20px}
-    section{margin-top:14px}
-
-    .tableWrap{margin-top:12px;overflow:auto;border-radius:16px;border:1px solid var(--line);background:rgba(2,6,23,.02)}
-    table{width:100%;border-collapse:collapse;min-width:980px;font-size:13px}
-    thead th{text-align:left;padding:10px;background:var(--card);border-bottom:1px solid var(--line)}
-    tbody td{padding:9px 10px;border-bottom:1px solid rgba(2,6,23,.10);background:#ffffff}
-    body.dark tbody td{background:rgba(15,23,42,.82);color:#e5e7eb}
-
-    .status{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;font-size:12px;border:1px solid rgba(2,6,23,.12)}
-    .dot{width:8px;height:8px;border-radius:99px}
+    .tableWrap{margin-top:12px;overflow:auto;border-radius:16px;border:1px solid var(--line)}
+    table{width:100%;border-collapse:collapse;min-width:900px;font-size:13px}
+    thead th{text-align:left;padding:12px;background:var(--bg);border-bottom:1px solid var(--line)}
+    tbody td{padding:12px;border-bottom:1px solid var(--line)}
+    
+    .status{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;font-size:11px}
+    .dot{width:8px;height:8px;border-radius:50%}
     .s-sub .dot{background:var(--sub)}
     .s-ap .dot{background:var(--ap)}
     .s-rej .dot{background:var(--rej)}
-
-    .grid3{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;margin-top:12px}
-    .panel{border:1px solid var(--line);background:rgba(2,6,23,.02);border-radius:16px;padding:14px}
-    .miniBtn{display:inline-flex;padding:7px 10px;border-radius:12px;border:1px solid rgba(2,6,23,.12);background:rgba(2,6,23,.04);font-size:12px;cursor:pointer}
-    .divider{height:1px;background:var(--line);margin:14px 0}
-
-    .modalOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1000;padding:20px}
-    .modal{max-width:980px;margin:40px auto;background:var(--card);border-radius:18px;overflow:hidden}
-    .modalHeader{display:flex;justify-content:space-between;padding:12px 14px;background:rgba(2,6,23,.03)}
-    .modalBody{padding:14px}
-    pre{white-space:pre-wrap;font-size:12px;background:rgba(2,6,23,.03);padding:12px;border-radius:14px}
-
-    @media (max-width:980px){ .gridHero, .grid3{grid-template-columns:1fr} }
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <header>
@@ -82,40 +58,36 @@
         <div class="logo"></div>
         <div>
           <h1>TaskFlow Dynamics</h1>
-          <p>Public Works Document Management • LAUSD-style Compliance</p>
+          <p>Public Works Document Management</p>
         </div>
       </div>
       <nav>
-        <a href="#deliverables">Submittals</a>
-        <a href="#rfcs">RFCs</a>
-        <a href="#inspections">Inspections</a>
         <button class="btn" id="themeBtn">Toggle Dark</button>
       </nav>
     </header>
 
-    <div class="gridHero">
+    <div class="heroArea">
       <div class="card">
         <h2 class="heroTitle">We run the <span style="color:var(--accent)">project record</span>.</h2>
-        <p class="heroP muted">TaskFlow Dynamics provides document controls—submittals, RFCs, and IOR readiness—so compliance protects the schedule instead of disrupting it.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <p class="heroP muted">
+          TaskFlow Dynamics provides LAUSD-style document controls—submittals, RFCs, inspection readiness (IOR workflows),
+          OEHS coordination, 4-week look-aheads, and progressive closeout—so compliance protects the schedule instead of disrupting it.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
           <a class="btn primary" href="#contact">Contact</a>
           <a class="btn" href="#deliverables">View Matrix</a>
         </div>
-      </div>
-      <div class="card">
-        <h2>What a visitor should feel</h2>
-        <p class="muted">Calm confidence. Clear ownership. No guesswork.</p>
-        <div class="divider"></div>
-        <p class="muted" style="font-size:13px">This page is intentionally simple: no logins, no plugins. Just the work product—how documentation is controlled.</p>
       </div>
     </div>
 
     <section id="deliverables" class="card">
       <h2>Submittals & Deliverables</h2>
       <p class="muted">Master accountability: what is required, who owns it, and when it’s due.</p>
-      <div style="margin:14px 0">
-        <a class="btn primary" id="viewSampleBtn" href="#" target="_blank" rel="noopener">View Deliverables Matrix (Sample)</a>
+      
+      <div style="margin:18px 0;">
+        <a class="btn primary" id="viewSampleBtn" href="#" target="_blank">View Deliverables Matrix (Sample)</a>
       </div>
+
       <div class="tableWrap">
         <table>
           <thead>
@@ -128,29 +100,10 @@
               <td>Await comments.</td>
             </tr>
             <tr>
-              <td>SUB-019</td><td>32 18 13</td><td>Synthetic Turf System</td>
-              <td><span class="status s-rej"><span class="dot"></span>Revise</span></td>
-              <td>Resubmit complete package.</td>
+              <td>SUB-022</td><td>26 05 00</td><td>Conduit & Wire</td>
+              <td><span class="status s-ap"><span class="dot"></span>Approved</span></td>
+              <td>Released for procurement.</td>
             </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="panel" style="margin-top:12px; display:flex; justify-content:space-between; align-items:center">
-        <div>
-          <h4 style="margin:0">Submittal Cover & Completeness Check</h4>
-          <p style="margin:4px 0 0; font-size:12px" class="muted">Routing sheet used to prevent delays.</p>
-        </div>
-        <button class="miniBtn" data-doc="sub014">Preview</button>
-      </div>
-    </section>
-
-    <section id="rfcs" class="card">
-      <h2>RFC Log</h2>
-      <div class="tableWrap">
-        <table>
-          <thead><tr><th>RFC #</th><th>Subject</th><th>Assigned To</th><th>Status</th><th>Action</th></tr></thead>
-          <tbody>
-            <tr><td>RFC-006</td><td>Embed pattern clarification</td><td>A/E</td><td><span class="status s-ip"><span class="dot"></span>In Progress</span></td><td>Protect pour window.</td></tr>
           </tbody>
         </table>
       </div>
@@ -158,39 +111,24 @@
 
     <section id="contact" class="card">
       <h2>Contact</h2>
-      <p><b>Luis Joaquin Colondres</b> • TaskFlow Dynamics<br/>📧 <a class="underline" href="mailto:ljc@colondresdev.com">ljc@colondresdev.com</a></p>
+      <p><b>Luis Joaquin Colondres</b><br>📧 <a href="mailto:ljc@colondresdev.com">ljc@colondresdev.com</a></p>
     </section>
-
-    <footer>© <span id="y"></span> TaskFlow Dynamics</footer>
-  </div>
-
-  <div class="modalOverlay" id="modalOverlay">
-    <div class="modal">
-      <div class="modalHeader"><b>Preview</b> <button class="miniBtn" id="closeBtn">Close</button></div>
-      <div class="modalBody"><pre id="modalContent"></pre></div>
-    </div>
   </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-    document.getElementById("themeBtn").addEventListener("click", () => document.body.classList.toggle("dark"));
-
-    const docs = { sub014: `TASKFLOW DYNAMICS — SUBMITTAL COVER (SAMPLE)\nSubmittal No.: SUB-014\nSpec: 09 96 23\nCompleteness: Verified.` };
-    const overlay = document.getElementById("modalOverlay");
-    document.querySelectorAll("[data-doc]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.getElementById("modalContent").textContent = docs[btn.getAttribute("data-doc")];
-        overlay.style.display = "block";
-      });
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      document.body.classList.toggle("dark");
     });
-    document.getElementById("closeBtn").addEventListener("click", () => overlay.style.display = "none");
 
-    // FIX FOR EXCEL LINK
+    // Fix for the Excel View Online Link
     (function() {
       const currentURL = window.location.href.split('#')[0].split('?')[0];
       const baseURL = currentURL.endsWith('/') ? currentURL : currentURL + '/';
       const excelPath = baseURL + "documents/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx";
-      document.getElementById('viewSampleBtn').href = "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(excelPath);
+      const sampleBtn = document.getElementById('viewSampleBtn');
+      if (sampleBtn) {
+        sampleBtn.href = "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(excelPath);
+      }
     })();
   </script>
 </body>
