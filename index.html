@@ -1,117 +1,269 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TaskFlow Dynamics | Public Works Document Management</title>
-  <style>
-    :root{
-      --bg:#f5f7ff; --card:#ffffff; --text:#0b1220; --muted:#334155; --line:rgba(2,6,23,.12);
-      --accent:#2f6fff; --accent2:#10b981; --warn:#f59e0b; --bad:#ef4444;
-      --ns:#6b7280; --ip:#3b82f6; --sub:#f59e0b; --ap:#10b981; --rej:#ef4444; --hold:#8b5cf6;
-    }
-    body.dark{
-      --bg:#0b1220; --card:#101a2e; --text:#eaf0ff; --muted:#b8c3e6; --line:rgba(255,255,255,.10);
-      --accent:#77a7ff; --accent2:#7dffc2;
-      background: radial-gradient(1200px 700px at 15% -10%, rgba(119,167,255,.22), transparent 60%), radial-gradient(900px 600px at 95% 0%, rgba(125,255,194,.14), transparent 55%), var(--bg);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);line-height:1.45;background:var(--bg)}
-    a{color:var(--text);text-decoration:none}
-    .wrap{max-width:1180px;margin:0 auto;padding:22px 16px 72px}
-    header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0 14px;border-bottom:1px solid var(--line);backdrop-filter:blur(10px);background:rgba(245,247,255,.90)}
-    body.dark header{background:linear-gradient(to bottom, rgba(11,18,32,.90), rgba(11,18,32,.40))}
-    .brand h1{margin:0;font-size:16px;letter-spacing:.25px}
-    .brand p{margin:0;font-size:12px;color:var(--muted)}
-    .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.75))}
-    nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-    nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:10px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(2,6,23,.04);font-size:13px;color:var(--text);cursor:pointer;white-space:nowrap}
-    .btn.primary{border-color:transparent;background:linear-gradient(135deg, #2f6fff, #10b981);color:#fff;font-weight:700}
-    
-    .gridHero{display:grid;grid-template-columns:1.25fr .75fr;gap:14px;padding:22px 0 8px}
-    .card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(2,6,23,.08);margin-bottom:14px}
-    
-    .heroTitle{font-size:38px;line-height:1.05;margin:0 0 10px}
-    .heroP{margin:0 0 14px;font-size:16px}
-    .tableWrap{margin-top:12px;overflow:auto;border-radius:16px;border:1px solid var(--line)}
-    table{width:100%;border-collapse:collapse;min-width:900px;font-size:13px}
-    thead th{text-align:left;padding:10px;background:var(--bg);border-bottom:1px solid var(--line)}
-    tbody td{padding:10px;border-bottom:1px solid var(--line)}
-    .status{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;font-size:11px}
-    .dot{width:8px;height:8px;border-radius:50%}
-    .s-sub .dot{background:var(--sub)}
-    .s-ap .dot{background:var(--ap)}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TaskFlow Dynamics | Public Works Document Management</title>
 
-    @media (max-width: 900px) { .gridHero { grid-template-columns: 1fr; } }
-  </style>
+<style>
+
+:root{
+--bg:#f5f7ff;
+--card:#ffffff;
+--text:#0b1220;
+--muted:#475569;
+--line:#e2e8f0;
+--accent:#2563eb;
+}
+
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+background:var(--bg);
+color:var(--text);
+}
+
+.wrap{
+max-width:1100px;
+margin:auto;
+padding:24px;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.logo{
+font-weight:700;
+font-size:18px;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:12px;
+padding:20px;
+margin-bottom:20px;
+}
+
+h1{
+margin:0 0 10px 0;
+font-size:32px;
+}
+
+h2{
+margin-top:0;
+}
+
+p{
+color:var(--muted);
+}
+
+.btn{
+display:inline-block;
+padding:10px 16px;
+background:var(--accent);
+color:white;
+text-decoration:none;
+border-radius:8px;
+margin-top:10px;
+margin-right:10px;
+font-size:14px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+th,td{
+border-bottom:1px solid var(--line);
+padding:8px;
+text-align:left;
+font-size:14px;
+}
+
+footer{
+margin-top:30px;
+font-size:12px;
+color:var(--muted);
+}
+
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo"></div>
-        <div>
-          <h1>TaskFlow Dynamics</h1>
-          <p>Public Works Document Management</p>
-        </div>
-      </div>
-      <nav>
-        <button class="btn" id="themeBtn">Toggle Dark</button>
-      </nav>
-    </header>
 
-    <div class="gridHero">
-      <div class="card">
-        <h2 class="heroTitle">We run the <span style="color:var(--accent)">project record</span>.</h2>
-        <p class="heroP">TaskFlow Dynamics provides document controls so compliance protects the schedule instead of disrupting it.</p>
-        <div style="display:flex;gap:10px">
-          <a class="btn primary" href="#contact">Contact</a>
-          <a class="btn" href="#deliverables">View Matrix</a>
-        </div>
-      </div>
-      <div class="card">
-        <h2>What a visitor should feel</h2>
-        <p>Calm confidence. Clear ownership. No guesswork.</p>
-        <hr style="border:0; border-top:1px solid var(--line); margin:15px 0;">
-        <p style="font-size:12px; color:var(--muted)">This page is intentionally simple: no logins, no plugins. Just the work product.</p>
-      </div>
-    </div>
+<div class="wrap">
 
-    <section id="deliverables" class="card">
-      <h2>Deliverables Matrix</h2>
-      <div style="margin:15px 0;">
-        <a class="btn primary" id="viewSampleBtn" href="#" target="_blank">View Deliverables Matrix Sample</a>
-      </div>
-      <div class="tableWrap">
-        <table>
-          <thead>
-            <tr><th>Submittal #</th><th>Spec</th><th>Title</th><th>Status</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>SUB-014</td><td>09 96 23</td><td>Anti-Graffiti Coating</td>
-              <td><span class="status s-sub"><span class="dot"></span>In Review</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+<header>
+<div class="logo">TaskFlow Dynamics</div>
+</header>
 
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p><b>Luis Joaquin Colondres</b><br>📧 <a href="mailto:ljc@colondresdev.com">ljc@colondresdev.com</a></p>
-    </section>
-  </div>
 
-  <script>
-    document.getElementById("themeBtn").onclick = () => document.body.classList.toggle("dark");
+<div class="card">
 
-    // The single necessary fix for the button
-    (function() {
-      const fileUrl = "https://colondresdev.github.io/documents/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx";
-      document.getElementById('viewSampleBtn').href = "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(fileUrl);
-    })();
-  </script>
+<h1>We run the project record.</h1>
+
+<p>
+TaskFlow Dynamics provides public works document control, deliverables tracking,
+inspection readiness coordination, and progressive closeout support.
+</p>
+
+<a class="btn" href="#contact">Contact</a>
+
+</div>
+
+
+<div class="card">
+
+<h2>What TaskFlow Dynamics Controls</h2>
+
+<ul>
+<li>Submittal logs with escalation tracking</li>
+<li>RFC logs and decision accountability</li>
+<li>DSA / IOR inspection coordination</li>
+<li>Deliverables Matrix ownership tracking</li>
+<li>4-week look-ahead constraint alignment</li>
+<li>Progressive closeout deliverable indexing</li>
+</ul>
+
+</div>
+
+
+<div class="card" id="deliverables">
+
+<h2>Deliverables Matrix</h2>
+
+<p>
+The Deliverables Matrix establishes ownership, approval authority,
+and due dates for all project documentation.
+</p>
+
+<a class="btn"
+href="https://colondresdev.github.io/documents/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx"
+target="_blank">
+View Deliverables Matrix Sample
+</a>
+
+<a class="btn"
+href="https://colondresdev.github.io/documents/TaskFlow_Dynamics_Deliverables_Matrix_Template.xlsx"
+target="_blank">
+Download Blank Template
+</a>
+
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Type</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>SUB-014</td>
+<td>Submittal</td>
+<td>Anti-Graffiti Coating Package</td>
+<td>In Review</td>
+</tr>
+
+<tr>
+<td>RFC-006</td>
+<td>RFC</td>
+<td>Embed Layout Clarification</td>
+<td>Pending</td>
+</tr>
+
+<tr>
+<td>IR-033</td>
+<td>Inspection</td>
+<td>Structural Steel Weld Inspection</td>
+<td>Scheduled</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="card">
+
+<h2>4-Week Look Ahead</h2>
+
+<table>
+
+<tr>
+<th>Week</th>
+<th>Activity</th>
+<th>Constraint</th>
+<th>Action</th>
+</tr>
+
+<tr>
+<td>Week 1</td>
+<td>Foundation Work</td>
+<td>RFC approval required</td>
+<td>Escalate if overdue</td>
+</tr>
+
+<tr>
+<td>Week 2</td>
+<td>Drainage Installation</td>
+<td>Inspection required</td>
+<td>Confirm inspector availability</td>
+</tr>
+
+<tr>
+<td>Week 3</td>
+<td>Turf Installation</td>
+<td>Submittal approval required</td>
+<td>Monitor approval timeline</td>
+</tr>
+
+<tr>
+<td>Week 4</td>
+<td>Striping</td>
+<td>Material delivery</td>
+<td>Confirm logistics</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="card" id="contact">
+
+<h2>Contact</h2>
+
+<p>
+
+Luis Joaquin Colondres<br>
+TaskFlow Dynamics<br><br>
+
+<a href="mailto:ljc@colondresdev.com">
+ljc@colondresdev.com
+</a>
+
+</p>
+
+</div>
+
+
+<footer>
+
+© 2026 TaskFlow Dynamics
+
+</footer>
+
+
+</div>
+
 </body>
 </html>
