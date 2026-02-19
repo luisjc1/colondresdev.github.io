@@ -295,19 +295,21 @@
 
       <!-- ✅ Button links assume the Excel files are in the SAME folder as index.html (repo root) -->
 <div style="margin-top:12px;margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;">
-  <a class="btn primary" 
-     href="https://view.officeapps.live.com/op/view.aspx?src=https://colondresdev.github.io/documents/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx" 
-     target="_blank" 
-     rel="noopener">
-    View Deliverables Matrix Sample
+  <a class="btn primary" id="viewSampleBtn" href="#" target="_blank">
+     View Deliverables Matrix Sample
   </a>
 
-  <a class="btn" 
-     href="https://colondresdev.github.io/documents/TaskFlow_Dynamics_Deliverables_Matrix_Template.xlsx" 
-     download>
-    Download Blank Template
+  <a class="btn" href="documents/TaskFlow_Dynamics_Deliverables_Matrix_Template.xlsx" download>
+     Download Blank Template
   </a>
 </div>
+
+<script>
+  // This automatically builds the correct URL for the Office Viewer
+  const base = window.location.href.split('#')[0].split('?')[0];
+  const samplePath = base + "documents/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx";
+  document.getElementById('viewSampleBtn').href = "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(samplePath);
+</script>
  
 
       <div class="tableWrap">
@@ -664,6 +666,7 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
+
 
 
 
