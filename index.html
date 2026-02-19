@@ -28,7 +28,13 @@
     nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:10px}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(2,6,23,.04);font-size:13px;color:var(--text);cursor:pointer;white-space:nowrap}
     .btn.primary{border-color:transparent;background:linear-gradient(135deg, #2f6fff, #10b981);color:#fff;font-weight:700}
+    
+    /* Original 2-Column Grid */
+    .gridHero{display:grid;grid-template-columns:1.25fr .75fr;gap:14px;padding:22px 0 8px}
     .card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(2,6,23,.08);margin-bottom:14px}
+    
+    .heroTitle{font-size:38px;line-height:1.05;margin:0 0 10px}
+    .heroP{margin:0 0 14px;font-size:16px}
     .tableWrap{margin-top:12px;overflow:auto;border-radius:16px;border:1px solid var(--line)}
     table{width:100%;border-collapse:collapse;min-width:900px;font-size:13px}
     thead th{text-align:left;padding:10px;background:var(--bg);border-bottom:1px solid var(--line)}
@@ -37,7 +43,8 @@
     .dot{width:8px;height:8px;border-radius:50%}
     .s-sub .dot{background:var(--sub)}
     .s-ap .dot{background:var(--ap)}
-    .s-rej .dot{background:var(--rej)}
+    
+    @media (max-width: 900px) { .gridHero { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -51,61 +58,58 @@
         </div>
       </div>
       <nav>
-        <a href="#deliverables">Deliverables</a>
         <button class="btn" id="themeBtn">Toggle Dark</button>
       </nav>
     </header>
 
-    <section id="deliverables" class="card" style="margin-top:20px">
-      <h2>Deliverables Matrix</h2>
-      <p>Master accountability: what is required, who owns it, and when it’s due.</p>
-
-      <div style="margin:20px 0; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn primary" 
-           href="https://view.officeapps.live.com/op/view.aspx?src=https://colondresdev.github.io/documents/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx" 
-           target="_blank">
-           View Deliverables Matrix Sample
-        </a>
-
-        <a class="btn" 
-           href="https://colondresdev.github.io/documents/TaskFlow_Dynamics_Deliverables_Matrix_Template.xlsx" 
-           download>
-           Download Blank Template
-        </a>
+    <div class="gridHero">
+      <div class="card">
+        <h2 class="heroTitle">We run the <span style="color:var(--accent)">project record</span>.</h2>
+        <p class="heroP">TaskFlow Dynamics provides document controls so compliance protects the schedule instead of disrupting it.</p>
+        <div style="display:flex;gap:10px">
+          <a class="btn primary" href="#contact">Contact</a>
+          <a class="btn" href="#deliverables">View Matrix</a>
+        </div>
       </div>
+      <div class="card">
+        <h2>What a visitor should feel</h2>
+        <p>Calm confidence. Clear ownership. No guesswork.</p>
+        <hr style="border:0; border-top:1px solid var(--line); margin:15px 0;">
+        <p style="font-size:12px; color:var(--muted)">This page is intentionally simple: no logins, no plugins.</p>
+      </div>
+    </div>
 
+    <section id="deliverables" class="card">
+      <h2>Deliverables Matrix</h2>
+      <div style="margin:15px 0;">
+        <a class="btn primary" id="viewSampleBtn" href="#" target="_blank">View Deliverables Matrix Sample</a>
+      </div>
       <div class="tableWrap">
         <table>
           <thead>
-            <tr><th>Submittal #</th><th>Spec</th><th>Title</th><th>Status</th><th>Next Action</th></tr>
+            <tr><th>Submittal #</th><th>Spec</th><th>Title</th><th>Status</th></tr>
           </thead>
           <tbody>
             <tr>
               <td>SUB-014</td><td>09 96 23</td><td>Anti-Graffiti Coating</td>
               <td><span class="status s-sub"><span class="dot"></span>In Review</span></td>
-              <td>Await comments.</td>
-            </tr>
-            <tr>
-              <td>SUB-022</td><td>26 05 00</td><td>Conduit & Wire</td>
-              <td><span class="status s-ap"><span class="dot"></span>Approved</span></td>
-              <td>Released for procurement.</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
-
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p><b>Luis Joaquin Colondres</b><br>📧 <a href="mailto:ljc@colondresdev.com">ljc@colondresdev.com</a></p>
-    </section>
   </div>
 
   <script>
-    const themeBtn = document.getElementById("themeBtn");
-    themeBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-    });
+    document.getElementById("themeBtn").onclick = () => document.body.classList.toggle("dark");
+
+    // The ONLY logic change kept: making sure the Excel file is found
+    (function() {
+      const path = window.location.origin + window.location.pathname;
+      const baseURL = path.endsWith('/') ? path : path.substring(0, path.lastIndexOf('/') + 1);
+      const fileUrl = baseURL + "documents/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx";
+      document.getElementById('viewSampleBtn').href = "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(fileUrl);
+    })();
   </script>
 </body>
 </html>
