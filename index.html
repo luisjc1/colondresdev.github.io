@@ -285,24 +285,42 @@
     </section>
 
     <!-- ✅ ONE Deliverables section ONLY -->
-    <section id="deliverables" class="card">
-      <h2>Deliverables Matrix</h2>
+   <section id="deliverables" class="card">
+  <h2>Deliverables Matrix</h2>
 
-      <p class="muted">
-        Master accountability: what is required, who owns it, who approves it, when it’s due, and what it impacts.
-        Updated weekly to drive escalation and protect the field.
-      </p>
+  <p class="muted">
+    Master accountability: what is required, who owns it, who approves it, when it’s due, and what it impacts.
+    Updated weekly to drive escalation and protect the field.
+  </p>
 
-      <!-- ✅ Button links assume the Excel files are in the SAME folder as index.html (repo root) -->
-<div style="margin-top:12px;margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;">
-  <a class="btn primary" id="viewSampleBtn" href="#" target="_blank">
-     View Deliverables Matrix Sample
-  </a>
+  <div style="margin-top:12px;margin-bottom:12px;">
+    <a class="btn primary" 
+       id="viewSampleBtn" 
+       href="#" 
+       target="_blank" 
+       rel="noopener">
+      View Deliverables Matrix Sample
+    </a>
+  </div>
 
-  <a class="btn" href="documents/TaskFlow_Dynamics_Deliverables_Matrix_Template.xlsx" download>
-     Download Blank Template
-  </a>
-</div>
+  <div class="tableWrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Submittal #</th><th>Spec</th><th>Title</th><th>Status</th><th>Next Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SUB-014</td><td>09 96 23</td>
+          <td>Anti-Graffiti Coating + Water Repellent</td>
+          <td><span class="status s-sub"><span class="dot"></span>In Review</span></td>
+          <td>Await comments.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
 <script>
   // This automatically builds the correct URL for the Office Viewer
@@ -666,6 +684,7 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
+
 
 
 
