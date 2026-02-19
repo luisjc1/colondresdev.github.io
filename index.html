@@ -23,58 +23,125 @@
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);line-height:1.45;background:var(--bg)}
-    a{color:var(--text);text-decoration:none} a.underline{text-decoration:underline}
+    a{color:var(--text);text-decoration:none}
+    a.underline{text-decoration:underline}
+
     .wrap{max-width:1180px;margin:0 auto;padding:22px 16px 72px}
-    header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0 14px;border-bottom:1px solid var(--line);backdrop-filter:blur(10px);background:rgba(245,247,255,.90)}
+    header{
+      position:sticky;top:0;z-index:50;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:12px 0 14px;border-bottom:1px solid var(--line);
+      backdrop-filter:blur(10px);background:rgba(245,247,255,.90)
+    }
     body.dark header{background:linear-gradient(to bottom, rgba(11,18,32,.90), rgba(11,18,32,.40))}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.75));box-shadow:0 18px 40px rgba(0,0,0,.18)}
-    body.dark .logo{background:linear-gradient(135deg, rgba(119,167,255,.95), rgba(125,255,194,.78));box-shadow:0 18px 40px rgba(0,0,0,.35)}
-    .brand h1{margin:0;font-size:16px;letter-spacing:.25px} .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .logo{
+      width:44px;height:44px;border-radius:14px;
+      background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.75));
+      box-shadow:0 18px 40px rgba(0,0,0,.18)
+    }
+    body.dark .logo{
+      background:linear-gradient(135deg, rgba(119,167,255,.95), rgba(125,255,194,.78));
+      box-shadow:0 18px 40px rgba(0,0,0,.35)
+    }
+    .brand h1{margin:0;font-size:16px;letter-spacing:.25px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
     nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
     nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:10px;border:1px solid transparent;white-space:nowrap}
     nav a:hover{color:var(--text);border-color:var(--line);background:rgba(2,6,23,.04)}
     body.dark nav a:hover{background:rgba(255,255,255,.06)}
+
     .topRight{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(2,6,23,.04);font-size:13px;color:var(--text);cursor:pointer;user-select:none;white-space:nowrap}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 12px;border-radius:12px;border:1px solid var(--line);
+      background:rgba(2,6,23,.04);font-size:13px;color:var(--text);
+      cursor:pointer;user-select:none;white-space:nowrap
+    }
     body.dark .btn{background:rgba(255,255,255,.04)}
     .btn.primary{border-color:transparent;background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.80));color:#06101c;font-weight:750}
     body.dark .btn.primary{background:linear-gradient(135deg, rgba(119,167,255,.95), rgba(125,255,194,.72))}
     .btn:hover{transform:translateY(-1px)}
+
     .gridHero{display:grid;grid-template-columns:1.25fr .75fr;gap:14px;padding:22px 0 8px}
-    .card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(2,6,23,.08)}
-    body.dark .card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));box-shadow:0 18px 45px rgba(0,0,0,.34)}
+    .card{
+      border:1px solid var(--line);background:var(--card);
+      border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(2,6,23,.08)
+    }
+    body.dark .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      box-shadow:0 18px 45px rgba(0,0,0,.34)
+    }
+
     .heroTitle{font-size:38px;line-height:1.05;margin:0 0 10px}
-    .muted{color:var(--muted)} .heroP{margin:0 0 14px;font-size:16px}
-    h2{margin:0 0 10px;font-size:20px} h3{margin:0 0 8px;font-size:16px} h4{margin:0;font-size:14px} section{margin-top:14px}
+    .muted{color:var(--muted)}
+    .heroP{margin:0 0 14px;font-size:16px}
+
+    h2{margin:0 0 10px;font-size:20px}
+    h3{margin:0 0 8px;font-size:16px}
+    h4{margin:0;font-size:14px}
+    section{margin-top:14px}
+
     .callout{border:1px solid rgba(245,158,11,.25);background:rgba(245,158,11,.08);border-radius:16px;padding:14px;margin-top:12px}
     .callout b{color:var(--warn)}
+
     .tableWrap{margin-top:12px;overflow:auto;border-radius:16px;border:1px solid var(--line);background:rgba(2,6,23,.02)}
     body.dark .tableWrap{background:rgba(0,0,0,.18)}
+
     table{width:100%;border-collapse:collapse;min-width:980px;font-size:13px}
-    thead th{text-align:left;padding:10px 10px;position:sticky;top:0;z-index:2;background:var(--card);color:var(--text);border-bottom:1px solid var(--line)}body.dark thead th{background:rgba(17,26,46,.92);color:#eaf0ff}body.light thead th{background:#ffffff;color:#0b1220}
-}   tbody td{padding:9px 10px;border-bottom:1px solid rgba(2,6,23,.10);background:#ffffff;vertical-align:top}
+
+    thead th{
+      text-align:left;
+      padding:10px 10px;
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:var(--card);
+      color:var(--text);
+      border-bottom:1px solid var(--line);
+    }
+    body.dark thead th{background:rgba(17,26,46,.92);color:#eaf0ff}
+    body.light thead th{background:#ffffff;color:#0b1220}
+
+    tbody td{
+      padding:9px 10px;
+      border-bottom:1px solid rgba(2,6,23,.10);
+      background:#ffffff;
+      vertical-align:top
+    }
     body.dark tbody td{background:rgba(15,23,42,.82);border-bottom:1px solid rgba(255,255,255,.08);color:#e5e7eb}
-    tbody tr:hover td{background:rgba(2,6,23,.03)} body.dark tbody tr:hover td{background:rgba(22,33,58,.92)}
+    tbody tr:hover td{background:rgba(2,6,23,.03)}
+    body.dark tbody tr:hover td{background:rgba(22,33,58,.92)}
+
     .status{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;border:1px solid rgba(2,6,23,.12);font-size:12px;white-space:nowrap}
     body.dark .status{border-color:rgba(255,255,255,.12)}
     .dot{width:8px;height:8px;border-radius:99px;background:var(--ns)}
-    .s-ns .dot{background:var(--ns)} .s-ip .dot{background:var(--ip)}m
-    .s-sub .dot{background:var(--sub)} .s-ap .dot{background:var(--ap)}
-    .s-rej .dot{background:var(--rej)} .s-hold .dot{background:var(--hold)}
+    .s-ns .dot{background:var(--ns)}
+    .s-ip .dot{background:var(--ip)}
+    .s-sub .dot{background:var(--sub)}
+    .s-ap .dot{background:var(--ap)}
+    .s-rej .dot{background:var(--rej)}
+    .s-hold .dot{background:var(--hold)}
+
     .badge{font-size:11px;padding:4px 8px;border-radius:12px;border:1px solid rgba(2,6,23,.12);color:var(--muted);background:rgba(2,6,23,.03);white-space:nowrap}
     body.dark .badge{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+
     .grid3{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;margin-top:12px}
     .panel{border:1px solid var(--line);background:rgba(2,6,23,.02);border-radius:16px;padding:14px}
     body.dark .panel{background:rgba(0,0,0,.18)}
     .panel p{margin:8px 0 0;font-size:12px;color:var(--muted)}
     .panel ul{margin:10px 0 0;padding-left:0;list-style:none}
     .panel li{margin:6px 0;font-size:12px}
+
     .miniBtn{display:inline-flex;align-items:center;justify-content:center;padding:7px 10px;border-radius:12px;border:1px solid rgba(2,6,23,.12);background:rgba(2,6,23,.04);font-size:12px;color:var(--text);margin-top:12px;cursor:pointer}
     body.dark .miniBtn{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
     .miniBtn:hover{transform:translateY(-1px)}
+
     .divider{height:1px;background:var(--line);margin:14px 0}
     footer{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+
     .modalOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1000;padding:20px}
     .modal{max-width:980px;margin:40px auto;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:18px;box-shadow:0 28px 80px rgba(0,0,0,.35);overflow:hidden}
     body.dark .modal{background:rgba(17,26,46,.98);border-color:rgba(255,255,255,.14);box-shadow:0 28px 80px rgba(0,0,0,.55)}
@@ -83,9 +150,16 @@
     .closeBtn{border:1px solid rgba(2,6,23,.12);background:rgba(2,6,23,.04);color:var(--text);padding:7px 10px;border-radius:12px;cursor:pointer;font-size:12px}
     body.dark .closeBtn{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
     .modalBody{padding:14px}
+
     pre{margin:0;white-space:pre-wrap;font-size:12px;line-height:1.45;color:var(--text);background:rgba(2,6,23,.03);border:1px solid rgba(2,6,23,.10);border-radius:14px;padding:12px}
     body.dark pre{color:#e5e7eb;background:rgba(0,0,0,.20);border:1px solid rgba(255,255,255,.10)}
-    @media (max-width:980px){.gridHero{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.heroTitle{font-size:32px}table{min-width:820px}}
+
+    @media (max-width:980px){
+      .gridHero{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .heroTitle{font-size:32px}
+      table{min-width:820px}
+    }
   </style>
 </head>
 
@@ -210,76 +284,31 @@
       </div>
     </section>
 
+    <!-- ✅ ONE Deliverables section ONLY -->
     <section id="deliverables" class="card">
       <h2>Deliverables Matrix</h2>
+
       <p class="muted">
-        Master accountability: <b>what</b> is required, <b>who owns it</b>, <b>who approves it</b>, <b>when it’s due</b>, and <b>what it impacts</b>.
+        Master accountability: what is required, who owns it, who approves it, when it’s due, and what it impacts.
+        Updated weekly to drive escalation and protect the field.
       </p>
 
-      <div class="tableWrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Category</th><th>ID</th><th>Deliverable</th><th>Owner</th><th>Reviewer / Authority</th>
-              <th>Due Trigger</th><th>Impact</th><th>Status</th><th>Aging</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="badge">Submittal</span></td><td>SUB-014</td>
-              <td>Anti-Graffiti Coating Package (Data Sheets, Samples, VOC, Warranty)</td>
-              <td>GC / Vendor</td><td>A/E + Owner</td><td>Prior to installation</td><td>Field release</td>
-              <td><span class="status s-sub"><span class="dot"></span>In Review</span></td><td>9 days</td>
-            </tr>
-            <tr>
-              <td><span class="badge">RFC</span></td><td>RFC-006</td>
-              <td>Embed pattern clarification (anchor layout &amp; edge distance)</td>
-              <td>GC</td><td>A/E + Owner</td><td>Field conflict identified</td><td>Prevent rework</td>
-              <td><span class="status s-ip"><span class="dot"></span>In Progress</span></td><td>6 days</td>
-            </tr>
-            <tr>
-              <td><span class="badge">Inspection</span></td><td>IR-033</td>
-              <td>Special Inspector – Structural steel welds (frame)</td>
-              <td>GC</td><td>Special Inspector</td><td>Pre-weld / during weld</td><td>Pass inspection</td>
-              <td><span class="status s-sub"><span class="dot"></span>Requested</span></td><td>3 days</td>
-            </tr>
-            <tr>
-              <td><span class="badge">OEHS</span></td><td>OEHS-003</td>
-              <td>Clearance documentation – area release (as applicable)</td>
-              <td>Consultant</td><td>OEHS</td><td>Area completion</td><td>Access / release</td>
-              <td><span class="status s-ns"><span class="dot"></span>Not Started</span></td><td>—</td>
-            </tr>
-            <tr>
-              <td><span class="badge">Closeout</span></td><td>CO-011</td>
-              <td>O&amp;M + Warranty Matrix (electrical, equipment, turf, irrigation)</td>
-              <td>Vendors</td><td>Owner</td><td>System startup</td><td>Turnover</td>
-              <td><span class="status s-ip"><span class="dot"></span>In Progress</span></td><td>—</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- ✅ Button links assume the Excel files are in the SAME folder as index.html (repo root) -->
+      <div style="margin-top:12px;margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn primary"
+           href="TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx"
+           target="_blank"
+           rel="noopener">
+          View Deliverables Matrix Sample
+        </a>
+
+        <a class="btn"
+           href="TaskFlow_Dynamics_Deliverables_Matrix_Template.xlsx"
+           target="_blank"
+           rel="noopener">
+          Download Blank Template
+        </a>
       </div>
-
-      <div class="callout">
-        <b>Disclosure:</b> All documents and examples shown are representative samples. Project names, dates, and details have been modified for demonstration purposes.
-      </div>
-    </section>
-
-    <section id="deliverables" class="card">
-  <h2>Deliverables Matrix</h2>
-
-  <p class="muted">
-    Master accountability: what is required, who owns it, who approves it, when it’s due, and what it impacts.
-    Updated weekly to drive escalation and protect the field.
-  </p>
-
-  <div style="margin-top:12px;margin-bottom:12px;">
-    <a class="btn primary"
-   href="./files/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx"
-   target="_blank"
-   rel="noopener">
-  View Deliverables Matrix Sample
-    </a>
-  </div>
 
       <div class="tableWrap">
         <table>
@@ -323,6 +352,10 @@
           </div>
           <button class="miniBtn" data-doc="sub014" type="button">Preview sample</button>
         </div>
+      </div>
+
+      <div class="callout">
+        <b>Disclosure:</b> All documents and examples shown are representative samples. Project names, dates, and details have been modified for demonstration purposes.
       </div>
     </section>
 
@@ -429,71 +462,71 @@
               <th>Week</th><th>Planned Work</th><th>Prereqs / Constraints</th><th>Responsible</th><th>Risk</th><th>Action</th>
             </tr>
           </thead>
-<tbody>
-  <tr>
-    <td>Week 1 (02/03–02/07)</td>
-    <td>Scoreboard foundations: form, rebar, embeds, pour</td>
-    <td>
-      RFC-006 decision required (embed layout).<br/>
-      IR-033 inspector confirmed and prerequisites verified.<br/>
-      Approved submittals released for embeds/materials.
-    </td>
-    <td>GC / Structural / TaskFlow Dynamics</td>
-    <td><span class="badge" style="color:var(--bad)">High</span></td>
-    <td>
-      Escalate RFC-006 if no response by 02/03 AM.<br/>
-      Confirm inspection window + readiness checklist 48 hours prior.
-    </td>
-  </tr>
+          <tbody>
+            <tr>
+              <td>Week 1 (02/03–02/07)</td>
+              <td>Scoreboard foundations: form, rebar, embeds, pour</td>
+              <td>
+                RFC-006 decision required (embed layout).<br/>
+                IR-033 inspector confirmed and prerequisites verified.<br/>
+                Approved submittals released for embeds/materials.
+              </td>
+              <td>GC / Structural / TaskFlow Dynamics</td>
+              <td><span class="badge" style="color:var(--bad)">High</span></td>
+              <td>
+                Escalate RFC-006 if no response by 02/03 AM.<br/>
+                Confirm inspection window + readiness checklist 48 hours prior.
+              </td>
+            </tr>
 
-  <tr>
-    <td>Week 2 (02/10–02/14)</td>
-    <td>Track base prep + drainage tie-in</td>
-    <td>
-      RFC-008 response required (tie-in detail).<br/>
-      Testing scheduled (compaction/moisture) and lab availability confirmed.<br/>
-      OEHS: verify no clearance holds for work area (as applicable).
-    </td>
-    <td>GC / Testing Lab / TaskFlow Dynamics</td>
-    <td><span class="badge" style="color:var(--bad)">High</span></td>
-    <td>
-      Advance lab request by 02/07.<br/>
-      Escalate RFC-008 if overdue; document schedule impact.
-    </td>
-  </tr>
+            <tr>
+              <td>Week 2 (02/10–02/14)</td>
+              <td>Track base prep + drainage tie-in</td>
+              <td>
+                RFC-008 response required (tie-in detail).<br/>
+                Testing scheduled (compaction/moisture) and lab availability confirmed.<br/>
+                OEHS: verify no clearance holds for work area (as applicable).
+              </td>
+              <td>GC / Testing Lab / TaskFlow Dynamics</td>
+              <td><span class="badge" style="color:var(--bad)">High</span></td>
+              <td>
+                Advance lab request by 02/07.<br/>
+                Escalate RFC-008 if overdue; document schedule impact.
+              </td>
+            </tr>
 
-  <tr>
-    <td>Week 3 (02/18–02/21)</td>
-    <td>Turf mobilization + staging</td>
-    <td>
-      SUB-019 approved (turf system, shockpad, warranty, installer cert).<br/>
-      Delivery dates confirmed + staging/access plan approved.<br/>
-      Inspection readiness aligned to install sequence.
-    </td>
-    <td>Vendor / GC / TaskFlow Dynamics</td>
-    <td><span class="badge" style="color:var(--warn)">Medium</span></td>
-    <td>
-      If SUB-019 still in review: escalate at Day 10 and Day 14.<br/>
-      Lock logistics and campus access.
-    </td>
-  </tr>
+            <tr>
+              <td>Week 3 (02/18–02/21)</td>
+              <td>Turf mobilization + staging</td>
+              <td>
+                SUB-019 approved (turf system, shockpad, warranty, installer cert).<br/>
+                Delivery dates confirmed + staging/access plan approved.<br/>
+                Inspection readiness aligned to install sequence.
+              </td>
+              <td>Vendor / GC / TaskFlow Dynamics</td>
+              <td><span class="badge" style="color:var(--warn)">Medium</span></td>
+              <td>
+                If SUB-019 still in review: escalate at Day 10 and Day 14.<br/>
+                Lock logistics and campus access.
+              </td>
+            </tr>
 
-  <tr>
-    <td>Week 4 (02/24–02/28)</td>
-    <td>Striping + punch progression</td>
-    <td>
-      SUB-027 approved (striping/materials) if required by spec.<br/>
-      Weather window confirmed + cure times planned.<br/>
-      Campus access coordination complete.
-    </td>
-    <td>GC / TaskFlow Dynamics</td>
-    <td><span class="badge" style="color:var(--accent)">Low</span></td>
-    <td>
-      Confirm cure times and access plan.<br/>
-      Capture punch evidence for progressive closeout.
-    </td>
-  </tr>
-</tbody>
+            <tr>
+              <td>Week 4 (02/24–02/28)</td>
+              <td>Striping + punch progression</td>
+              <td>
+                SUB-027 approved (striping/materials) if required by spec.<br/>
+                Weather window confirmed + cure times planned.<br/>
+                Campus access coordination complete.
+              </td>
+              <td>GC / TaskFlow Dynamics</td>
+              <td><span class="badge" style="color:var(--accent)">Low</span></td>
+              <td>
+                Confirm cure times and access plan.<br/>
+                Capture punch evidence for progressive closeout.
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </section>
@@ -538,20 +571,16 @@
 
       <p>
         <b>Luis Joaquin Colondres</b><br/>
-    TaskFlow Dynamics<br/><br/>
+        TaskFlow Dynamics<br/><br/>
 
-    📧 <a class="underline" href="mailto:ljc@colondresdev.com">
-      ljc@colondresdev.com
-    </a><br/>
+        📧 <a class="underline" href="mailto:ljc@colondresdev.com">ljc@colondresdev.com</a><br/>
+        📍 Southern California • Remote support available
+      </p>
 
-    📍 Southern California • Remote support available
-  </p>
-
-  <p class="muted" style="margin-top:12px;font-size:12px">
-    Response within 1 business day.
-  </p>
-
-</section>
+      <p class="muted" style="margin-top:12px;font-size:12px">
+        Response within 1 business day.
+      </p>
+    </section>
 
     <footer>© <span id="y"></span> TaskFlow Dynamics • Public Works Document Management</footer>
 
@@ -569,6 +598,7 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
     const themeBtn = document.getElementById("themeBtn");
     themeBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark");
@@ -634,18 +664,3 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
