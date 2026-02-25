@@ -92,9 +92,13 @@ a:hover{
 
     .gridHero{display:grid;grid-template-columns:1.25fr .75fr;gap:14px;padding:22px 0 8px}
     .card{
-      border:1px solid var(--line);background:var(--card);
-      border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(2,6,23,.08)
-    }
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--text);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 12px 28px rgba(0,0,0,.25);
+}
     body.dark .card{
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       box-shadow:0 18px 45px rgba(0,0,0,.34)
@@ -154,8 +158,13 @@ a:hover{
     body.dark .badge{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
 
     .grid3{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;margin-top:12px}
-    .panel{border:1px solid var(--line);background:rgba(2,6,23,.02);border-radius:16px;padding:14px}
-    body.dark .panel{background:rgba(0,0,0,.18)}
+.panel{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  border-radius:16px;
+  padding:14px;
+}    body.dark .panel{background:rgba(0,0,0,.18)}
     .panel p{margin:8px 0 0;font-size:12px;color:var(--muted)}
     .panel ul{margin:10px 0 0;padding-left:0;list-style:none}
     .panel li{margin:6px 0;font-size:12px}
@@ -723,6 +732,7 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
+
 
 
 
