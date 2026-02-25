@@ -9,22 +9,54 @@
 
   <style>
     :root{
-      --bg:#7F9DB1; --card:#ffffff; --text:#0b1220; --muted:#334155; --line:rgba(2,6,23,.12);
-      --accent:#2f6fff; --accent2:#10b981; --warn:#f59e0b; --bad:#ef4444;
-      --ns:#6b7280; --ip:#3b82f6; --sub:#f59e0b; --ap:#10b981; --rej:#ef4444; --hold:#8b5cf6;
+  --bg:#0A1930;        /* Deep navy background */
+  --card:#102544;      /* Card background */
+  --text:#F0F6FF;      /* Primary text */
+  --muted:#9FB3D1;     /* Secondary text */
+  --line:rgba(255,255,255,.12);
+
+  --accent:#2F6FFF;
+  --accent2:#10B981;
+  --warn:#F59E0B;
+  --bad:#EF4444;
+
+  --ns:#6B7280;
+  --ip:#3B82F6;
+  --sub:#F59E0B;
+  --ap:#10B981;
+  --rej:#EF4444;
+  --hold:#8B5CF6;
+}
 
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);line-height:1.45;background:var(--bg)}
-    a{color:var(--text);text-decoration:none}
+    a{
+  color:#7FB3FF;
+  text-decoration:none;
+}
+
+a:hover{
+  color:#A8CCFF;
+}
+    
+
     a.underline{text-decoration:underline}
 
     .wrap{max-width:1180px;margin:0 auto;padding:22px 16px 72px}
     header{
-      position:sticky;top:0;z-index:50;
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
-      padding:12px 0 14px;border-bottom:1px solid var(--line);
-      backdrop-filter:blur(10px);background:rgba(11,31,58,.95)
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:12px 0 14px;
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(10px);
+  background:rgba(10,25,48,.85)
+}
     }
     body.dark header{background:linear-gradient(to bottom, rgba(11,18,32,.90), rgba(11,18,32,.40))}
     .brand{display:flex;gap:12px;align-items:center}
@@ -691,6 +723,7 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
+
 
 
 
