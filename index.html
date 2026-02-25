@@ -17,7 +17,7 @@
       --bg:#0b1220; --card:#101a2e; --text:#eaf0ff; --muted:#b8c3e6; --line:rgba(255,255,255,.10);
       --accent:#77a7ff; --accent2:#7dffc2;
       background:
-        radial-gradient(1200px 700px at 15% -10%, rgba(119,167,255,.22), transparent 60%),
+        radial-gradient(1200px 700px at 15% -10%, rgba(119,167,255,.22), transparent 60%),f
         radial-gradient(900px 600px at 95% 0%, rgba(125,255,194,.14), transparent 55%),
         var(--bg);
     }
@@ -191,23 +191,26 @@
     </header>
 
    <div class="gridHero" style="grid-template-columns: 1fr;"> <div class="card">
-    <h2 class="heroTitle">We run the <span style="color:var(--accent)">project record</span>.</h2>
-    <p class="heroP muted">
-      TaskFlow Dynamics manages submittals, RFC and RFI tracking, inspection readiness including IOR coordination, OEHS documentation, 4 week look ahead planning, and progressive closeout so compliance stays aligned with execution and never disrupts the schedule.
-    </p>
+        <div class="gridHero" style="grid-template-columns: 1fr; padding:14px 0 6px;">
+      <div class="card">
+        <h2 class="heroTitle" style="margin-bottom:6px;">
+          We run the <span style="color:var(--accent)">project record</span>.
+        </h2>
 
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-      <a class="btn primary" href="#contact">Request a Documentation Assessment</a>
-      <a class="btn" href="#deliverables">View Deliverables Matrix</a>
-    </div>
+        <p class="heroP muted" style="margin-top:0;">
+          TaskFlow Dynamics manages submittals, RFC and RFI tracking, inspection readiness including IOR coordination, OEHS documentation, 4 week look ahead planning, and progressive closeout so compliance stays aligned with execution and never disrupts the schedule.
+        </p>
 
-    <div class="callout" style="margin-top:14px">
-      <b>Stabilization focus:</b> Approvals, inspection readiness, schedule constraints, and closeout exposure—the four documentation failures that most often derail public works projects.
-    </div>
-  </div>
-</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn primary" href="#contact">Request a Documentation Assessment</a>
+          <a class="btn" href="#deliverables">View Deliverables Matrix</a>
+        </div>
+
+        <div class="callout" style="margin-top:14px">
+          <b>Stabilization focus:</b> Approvals, inspection readiness, schedule constraints, and closeout exposure—the four documentation failures that most often derail public works projects.
+        </div>
       </div>
-
+    </div>
       
 
     <section class="card" id="services">
@@ -702,6 +705,7 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
+
 
 
 
