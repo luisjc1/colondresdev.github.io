@@ -386,9 +386,7 @@
       </p>
 
       <div style="margin: 18px 0;">
-        <a class="btn primary" id="viewSampleBtn" href="#" rel="noopener">
-  View master deliverables matrix sample
-</a>
+        <a class="btn primary" id="viewSampleBtn" href="#"></a>
       </div>
 
       <div class="tableWrap">
@@ -732,8 +730,7 @@
       const samplePath = base + "documents/TaskFlow_Dynamics_Deliverables_Matrix_Sample.xlsx";
       const btn = document.getElementById("viewSampleBtn");
       if(btn){
-        btn.href = "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(samplePath);
-      }
+btn.href = samplePath;      }
     })();
 
     const docs = {
@@ -798,6 +795,7 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
+
 
 
 
