@@ -110,6 +110,11 @@
   border-radius:14px;
   box-shadow:0 18px 44px rgba(0,0,0,.38);
 }
+.btn.primary{
+      border-color:transparent;
+      background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.80));
+      color:#06101c;
+      font-weight:750    
 .btn.email:hover{transform:translateY(-2px)}
 .btn.email:focus{outline:3px solid rgba(16,185,129,.35); outline-offset:3px}
 
@@ -117,13 +122,8 @@
 .btn:hover{transform:translateY(-1px)}
     
 
-    .btn.primary{
-      border-color:transparent;
-      background:linear-gradient(135deg, rgba(47,111,255,.95), rgba(16,185,129,.80));
-      color:#06101c;
-      font-weight:750
+    
     }
-    .btn:hover{transform:translateY(-1px)}
 
     .gridHero{display:grid;grid-template-columns:1fr;gap:14px;padding:22px 0 8px}
 
@@ -320,8 +320,7 @@
         </p>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-  <a class="btn primary" href="mailto:ljc@colondresdev.com">Email TaskFlow Dynamics</a>
-  <a class="btn" href="#contact">Request a Documentation Assessment</a>
+<a class="btn email" href="mailto:ljc@colondresdev.com?subject=Documentation%20Assessment%20Request">Email TaskFlow Dynamics</a>  <a class="btn" href="#contact">Request a Documentation Assessment</a>
   <a class="btn" href="#deliverables">View Deliverables Matrix</a>
 </div>
 
@@ -404,7 +403,9 @@
       </p>
 
       <div style="margin: 18px 0;">
-        <a class="btn primary" id="viewSampleBtn" href="#"></a>
+<a class="btn primary" id="viewSampleBtn" href="#">
+  View master deliverables matrix sample
+</a>
       </div>
 
       <div class="tableWrap">
@@ -813,6 +814,7 @@ Fewer failed inspections and less rework.`
   </script>
 </body>
 </html>
+
 
 
 
