@@ -816,8 +816,23 @@ Fewer failed inspections and less rework.`
     overlay.addEventListener("click", (e) => { if(e.target === overlay) closeModal(); });
     document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
   </script>
+  <script>
+function updateClock() {
+  const now = new Date();
+  const timeString = now.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+  document.getElementById("realtime-clock").textContent = timeString;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
 </body>
 </html>
+
 
 
 
