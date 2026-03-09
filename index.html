@@ -849,9 +849,36 @@ updateClock();
   <strong>TaskFlow Dynamics</strong>
   <p>How can we help?</p>
   <textarea placeholder="Type your message..." style="width:100%; height:120px;"></textarea>
-</div>  
+</div> 
+<script>
+function checkChatHours() {
+
+  const now = new Date();
+
+  const pstHour = new Date(
+    now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
+  ).getHours();
+
+  if (pstHour >= 9 && pstHour < 15) {
+    document.getElementById("chat-button").style.display = "block";
+  }
+}
+
+function openChat() {
+  const chat = document.getElementById("chatbox");
+
+  if (chat.style.display === "none") {
+    chat.style.display = "block";
+  } else {
+    chat.style.display = "none";
+  }
+}
+
+checkChatHours();
+</script>  
 </body>
 </html>
+
 
 
 
