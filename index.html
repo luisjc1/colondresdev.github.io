@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>TaskFlow Dynamics | Public Works Documentation, Certified Payroll & Compliance Support</title>
-  <meta name="description" content="TaskFlow Dynamics helps public works contractors manage submittals, RFI/RFC tracking, inspection coordination, certified payroll, DSA and district compliance, and closeout documentation so approvals, inspections, and payment stay on track." />
+  <meta name="description" content="TaskFlow Dynamics helps public works contractors manage submittals, RFI and RFC tracking, inspection coordination, certified payroll, DSA and district compliance, and closeout documentation so approvals, inspections, and payment stay on track." />
   <meta name="keywords" content="public works documentation, certified payroll support, DIR payroll, federal WH-347, submittal tracking, RFI RFC coordination, inspection coordination, DSA compliance, LAUSD documentation, closeout documentation, public works compliance" />
   <meta name="theme-color" content="#0A1930" />
 
@@ -27,6 +27,7 @@
     :root{
       --bg:#0A1930;
       --card:#102544;
+      --card2:#0f223e;
       --text:#F0F6FF;
       --muted:#9FB3D1;
       --line:rgba(255,255,255,.12);
@@ -45,15 +46,20 @@
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
       font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--text);
       line-height:1.45;
-      background:var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(47,111,255,.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(16,185,129,.10), transparent 22%),
+        var(--bg);
     }
 
+    img{max-width:100%;display:block}
     a{color:#7FB3FF;text-decoration:none}
     a:hover{color:#A8CCFF}
     a.underline{text-decoration:underline}
@@ -71,7 +77,7 @@
       padding:12px 0 14px;
       border-bottom:1px solid var(--line);
       backdrop-filter:blur(10px);
-      background:rgba(10,25,48,.85);
+      background:rgba(10,25,48,.88);
     }
 
     .brand{display:flex;gap:12px;align-items:center}
@@ -151,25 +157,78 @@
     .btn.email:hover{transform:translateY(-2px)}
     .btn.email:focus{outline:3px solid rgba(16,185,129,.35); outline-offset:3px}
 
-    .gridHero{display:grid;grid-template-columns:1fr;gap:14px;padding:22px 0 8px}
+    .gridHero{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:16px;
+      padding:22px 0 8px
+    }
 
     .card{
       border:1px solid var(--line);
-      background:var(--card);
+      background:linear-gradient(180deg, rgba(16,37,68,.98), rgba(15,34,62,.98));
       color:var(--text);
       border-radius:18px;
       padding:18px;
       box-shadow:0 12px 28px rgba(0,0,0,.25)
     }
 
-    .heroTitle{font-size:38px;line-height:1.05;margin:0 0 10px}
+    .heroTitle{font-size:42px;line-height:1.04;margin:0 0 10px}
     .muted{color:var(--muted)}
     .heroP{margin:0 0 14px;font-size:16px}
 
-    h2{margin:0 0 10px;font-size:20px}
+    h2{margin:0 0 10px;font-size:22px}
     h3{margin:0 0 8px;font-size:16px}
     h4{margin:0;font-size:14px}
     section{margin-top:14px}
+
+    .heroMedia{
+      min-height:100%;
+      overflow:hidden;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      position:relative;
+    }
+
+    .heroMedia img{
+      width:100%;
+      height:100%;
+      min-height:420px;
+      object-fit:cover;
+      border-radius:18px;
+      opacity:.94;
+    }
+
+    .heroMediaOverlay{
+      position:absolute;
+      inset:auto 0 0 0;
+      padding:18px;
+      background:linear-gradient(180deg, transparent, rgba(10,25,48,.92));
+      border-radius:0 0 18px 18px;
+    }
+
+    .heroStats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .stat{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:rgba(255,255,255,.04);
+    }
+
+    .stat b{
+      display:block;
+      font-size:20px;
+      margin-bottom:4px;
+      color:#fff;
+    }
 
     .callout{
       border:1px solid rgba(245,158,11,.25);
@@ -180,6 +239,87 @@
     }
 
     .callout b{color:var(--warn)}
+
+    .sectionBanner{
+      margin:-4px 0 14px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+    }
+
+    .sectionBanner img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      opacity:.90;
+    }
+
+    .problemGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .problemCard{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:16px;
+      overflow:hidden;
+    }
+
+    .problemCard img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+    }
+
+    .problemCardBody{
+      padding:14px;
+    }
+
+    .processWrap{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .processStep{
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      padding:16px 12px;
+      text-align:center;
+      min-height:110px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .processStep .num{
+      width:28px;
+      height:28px;
+      margin:0 auto 10px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      font-weight:800;
+      color:#06101c;
+      background:linear-gradient(135deg, rgba(47,111,255,1), rgba(16,185,129,.95));
+    }
+
+    .processArrow{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-size:18px;
+    }
 
     .tableWrap{
       margin-top:12px;
@@ -264,6 +404,27 @@
     .miniBtn:hover{transform:translateY(-1px)}
 
     .divider{height:1px;background:var(--line);margin:14px 0}
+
+    .trustGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      align-items:stretch;
+      margin-top:14px;
+    }
+
+    .trustImage{
+      overflow:hidden;
+      padding:0;
+    }
+
+    .trustImage img{
+      width:100%;
+      height:100%;
+      min-height:320px;
+      object-fit:cover;
+      border-radius:18px;
+    }
 
     footer{
       margin-top:18px;
@@ -374,10 +535,21 @@
       resize:vertical;
     }
 
+    @media (max-width:1100px){
+      .gridHero{grid-template-columns:1fr}
+      .heroMedia img{min-height:340px}
+      .processWrap{grid-template-columns:repeat(3,1fr)}
+    }
+
     @media (max-width:980px){
       .grid3{grid-template-columns:1fr}
-      .heroTitle{font-size:32px}
+      .problemGrid{grid-template-columns:1fr}
+      .trustGrid{grid-template-columns:1fr}
+      .heroTitle{font-size:34px}
+      .heroStats{grid-template-columns:1fr}
+      .processWrap{grid-template-columns:1fr}
       table{min-width:820px}
+      .sectionBanner img{height:180px}
     }
   </style>
 
@@ -387,7 +559,7 @@
     "@type": "ProfessionalService",
     "name": "TaskFlow Dynamics",
     "url": "https://taskflowdynamics.com",
-    "description": "TaskFlow Dynamics supports public works contractors with submittals, RFI/RFC tracking, inspection coordination, certified payroll, DSA and district compliance, and closeout documentation.",
+    "description": "TaskFlow Dynamics supports public works contractors with submittals, RFI and RFC tracking, inspection coordination, certified payroll, DSA and district compliance, and closeout documentation.",
     "areaServed": {
       "@type": "Place",
       "name": "California"
@@ -472,10 +644,33 @@
           </a>
         </div>
 
+        <div class="heroStats">
+          <div class="stat">
+            <b>Approvals</b>
+            <span class="muted">Submittals, RFCs, routing, releases, decision tracking</span>
+          </div>
+          <div class="stat">
+            <b>Inspections</b>
+            <span class="muted">Readiness, prerequisites, requests, evidence, closure</span>
+          </div>
+          <div class="stat">
+            <b>Payment</b>
+            <span class="muted">Certified payroll, compliance pressure, audit readiness</span>
+          </div>
+        </div>
+
         <div id="center-chat-wrap"></div>
 
         <div class="callout" style="margin-top:14px">
-          <b>Core support:</b> Submittals, RFI/RFC tracking, inspection coordination, certified payroll (DIR and federal), DSA and district compliance, 4 week look ahead alignment, and progressive closeout.
+          <b>Core support:</b> Submittals, RFI and RFC tracking, inspection coordination, certified payroll, DSA and district compliance, 4 week look ahead alignment, and progressive closeout.
+        </div>
+      </div>
+
+      <div class="card heroMedia">
+        <img src="images/hero-doc-control.jpg" alt="Construction project documentation review in a job trailer with plans, laptop, and coordination meeting">
+        <div class="heroMediaOverlay">
+          <h3 style="margin:0 0 6px;">Documentation control that supports production</h3>
+          <p class="muted" style="margin:0;">Field aware, schedule aware, inspection aware, and built to protect approvals and payment.</p>
         </div>
       </div>
     </div>
@@ -486,20 +681,29 @@
         TaskFlow Dynamics is most valuable when documentation starts affecting production, approvals, inspections, or payment.
       </p>
 
-      <div class="grid3">
-        <div class="panel">
-          <h4>Approvals are lagging</h4>
-          <p>Submittals are still out, RFI/RFC responses are late, or materials cannot be released when the field is ready.</p>
+      <div class="problemGrid">
+        <div class="problemCard">
+          <img src="images/problem-approvals.jpg" alt="Public works approval delays with marked-up submittals and document backlog">
+          <div class="problemCardBody">
+            <h4>Approvals are lagging</h4>
+            <p class="muted">Submittals are still out, RFI and RFC responses are late, or materials cannot be released when the field is ready.</p>
+          </div>
         </div>
 
-        <div class="panel">
-          <h4>Inspections are not clearing</h4>
-          <p>Inspection requests are delayed, prerequisites are incomplete, or work is done but not accepted.</p>
+        <div class="problemCard">
+          <img src="images/problem-inspections.jpg" alt="Inspection coordination issue at a construction site with field work waiting for review">
+          <div class="problemCardBody">
+            <h4>Inspections are not clearing</h4>
+            <p class="muted">Inspection requests are delayed, prerequisites are incomplete, or work is done but not accepted.</p>
+          </div>
         </div>
 
-        <div class="panel">
-          <h4>Payment is tied to paperwork</h4>
-          <p>Certified payroll, compliance records, or missing documentation are slowing payment or creating audit exposure.</p>
+        <div class="problemCard">
+          <img src="images/problem-payment.jpg" alt="Certified payroll and compliance paperwork affecting payment processing">
+          <div class="problemCardBody">
+            <h4>Payment is tied to paperwork</h4>
+            <p class="muted">Certified payroll, compliance records, or missing documentation are slowing payment or creating audit exposure.</p>
+          </div>
         </div>
       </div>
 
@@ -510,8 +714,51 @@
       </p>
     </section>
 
+    <section class="card" id="process">
+      <h2>How TaskFlow Dynamics helps</h2>
+      <p class="muted">The work in the field only moves cleanly when the process around it is controlled.</p>
+
+      <div class="processWrap">
+        <div class="processStep">
+          <div class="num">1</div>
+          <b>Field work</b>
+          <span class="muted">What is happening now</span>
+        </div>
+        <div class="processStep">
+          <div class="num">2</div>
+          <b>Documentation</b>
+          <span class="muted">What must be current</span>
+        </div>
+        <div class="processStep">
+          <div class="num">3</div>
+          <b>Approval</b>
+          <span class="muted">What must be released</span>
+        </div>
+        <div class="processStep">
+          <div class="num">4</div>
+          <b>Inspection</b>
+          <span class="muted">What must be verified</span>
+        </div>
+        <div class="processStep">
+          <div class="num">5</div>
+          <b>Payment</b>
+          <span class="muted">What must support billing</span>
+        </div>
+        <div class="processStep">
+          <div class="num">6</div>
+          <b>Closeout</b>
+          <span class="muted">What must be delivered</span>
+        </div>
+      </div>
+    </section>
+
     <section class="card" id="services">
       <h2>Services</h2>
+
+      <div class="sectionBanner">
+        <img src="images/services-banner.jpg" alt="Organized public works documentation workflow with binders, schedule, laptop, and checklist">
+      </div>
+
       <p class="muted">
         TaskFlow Dynamics provides targeted support for the documentation side of public works projects, where delays, rework, failed inspections, and payment issues often begin when requirements are not tracked tightly enough.
       </p>
@@ -578,6 +825,11 @@
 
     <section class="card" id="payroll">
       <h2>Certified payroll support</h2>
+
+      <div class="sectionBanner">
+        <img src="images/payroll-banner.jpg" alt="Certified payroll and labor compliance support with organized payroll documents and spreadsheet workflow">
+      </div>
+
       <p class="muted">
         Certified payroll is not just a weekly task. It is a compliance process tied directly to payment, audit exposure, and project control.
       </p>
@@ -590,7 +842,7 @@
 
         <div class="panel">
           <h4>Federal projects</h4>
-          <p>Support for WH-347 preparation and submission coordination on federal and Davis-Bacon projects, including Navy work.</p>
+          <p>Support for WH-347 preparation and submission coordination on federal and Davis Bacon projects, including Navy work.</p>
         </div>
 
         <div class="panel">
@@ -608,6 +860,11 @@
 
     <section id="deliverables" class="card">
       <h2>Submittals and deliverables</h2>
+
+      <div class="sectionBanner">
+        <img src="images/deliverables-banner.jpg" alt="Submittal and deliverables package with organized tabs, specification references, and routing sheets">
+      </div>
+
       <p class="muted">
         Master accountability: what is required, who owns it, and what it impacts. This matrix is updated weekly to drive escalation and protect the field.
       </p>
@@ -670,6 +927,11 @@
 
     <section id="rfcs" class="card">
       <h2>RFC log</h2>
+
+      <div class="sectionBanner">
+        <img src="images/rfc-banner.jpg" alt="RFC and design clarification workflow with marked-up plans and coordination exhibits">
+      </div>
+
       <p class="muted">Field conflicts resolved with clear exhibits, due dates, and decision tracking.</p>
 
       <div class="tableWrap">
@@ -732,6 +994,11 @@
 
     <section id="inspections" class="card">
       <h2>Inspection requests</h2>
+
+      <div class="sectionBanner">
+        <img src="images/inspection-banner.jpg" alt="Inspection readiness coordination with field checklist, site verification, and documented prerequisites">
+      </div>
+
       <p class="muted">Prerequisites verified, inspections requested at the right time, results documented, and re inspections closed with evidence.</p>
 
       <div class="tableWrap">
@@ -798,6 +1065,11 @@
 
     <section id="lookahead" class="card">
       <h2>4 week look ahead</h2>
+
+      <div class="sectionBanner">
+        <img src="images/lookahead-banner.jpg" alt="Four week look ahead planning with schedule, notes, highlighted constraints, and coordination workflow">
+      </div>
+
       <p class="muted">Look ahead tied to documentation constraints so the schedule is buildable.</p>
 
       <div class="tableWrap">
@@ -868,6 +1140,11 @@
 
     <section id="closeout" class="card">
       <h2>Progressive closeout tracker</h2>
+
+      <div class="sectionBanner">
+        <img src="images/closeout-banner.jpg" alt="Closeout documentation package with warranties, O and M manuals, turnover folders, and training records">
+      </div>
+
       <p class="muted">Closeout deliverables are tracked during construction to eliminate end of project backlog and audit risk.</p>
 
       <div class="tableWrap">
@@ -895,7 +1172,7 @@
             </tr>
             <tr>
               <td>CO 014</td>
-              <td>Warranty matrix and s</td>
+              <td>Warranty matrix and submittal alignment</td>
               <td>GC</td>
               <td>Substantial completion</td>
               <td><span class="status s-sub"><span class="dot"></span>In review</span></td>
@@ -918,30 +1195,48 @@
 
     <section id="contact" class="card">
       <h2>Contact</h2>
-      <p class="muted">
-        If your project is waiting on approvals, inspections, certified payroll, or closeout documentation, reach out directly. These issues are usually not field-related, but they will affect schedule and payment if they are not controlled.
-      </p>
 
-      <div class="callout" style="margin-top:12px;">
-        Most engagements start when a project begins to slow down due to documentation, compliance, or coordination issues. Early involvement helps prevent that from happening.
+      <div class="trustGrid">
+        <div>
+          <p class="muted">
+            If your project is waiting on approvals, inspections, certified payroll, or closeout documentation, reach out directly. These issues are usually not field-related, but they will affect schedule and payment if they are not controlled.
+          </p>
+
+          <div class="callout" style="margin-top:12px;">
+            Most engagements start when a project begins to slow down due to documentation, compliance, or coordination issues. Early involvement helps prevent that from happening.
+          </div>
+
+          <div class="callout" style="margin-top:12px;">
+            TaskFlow Dynamics provides confidential documentation support and operates discreetly alongside the project team. Services are insured and structured to protect contractor interests and project integrity.
+          </div>
+
+          <div class="divider"></div>
+
+          <p>
+            <b>TaskFlow Dynamics</b><br/>
+            661 904 6885<br/>
+            <a class="underline" href="mailto:docs@taskflowdynamics.com">docs@taskflowdynamics.com</a><br/>
+            California • Remote support available for public works and federal projects
+          </p>
+
+          <p class="muted" style="margin-top:12px;font-size:12px">
+            Response within 1 business day.
+          </p>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+            <a class="btn email" href="mailto:docs@taskflowdynamics.com?subject=Project%20Documentation%20Support%20Request">
+              Start the conversation
+            </a>
+            <a class="btn" href="mailto:docs@taskflowdynamics.com?subject=Need%20Help%20With%20Project%20Documentation">
+              Request support
+            </a>
+          </div>
+        </div>
+
+        <div class="card trustImage">
+          <img src="images/contact-trust.jpg" alt="Organized job trailer or project desk showing plans, laptop, and structured document review">
+        </div>
       </div>
-
-      <div class="callout" style="margin-top:12px;">
-        TaskFlow Dynamics provides confidential documentation support and operates discreetly alongside the project team. Services are insured and structured to protect contractor interests and project integrity.
-      </div>
-
-      <div class="divider"></div>
-
-      <p>
-        <b>TaskFlow Dynamics</b><br/>
-        661 904 6885<br/>
-        <a class="underline" href="mailto:docs@taskflowdynamics.com">docs@taskflowdynamics.com</a><br/>
-        California • Remote support available for public works and federal projects
-      </p>
-
-      <p class="muted" style="margin-top:12px;font-size:12px">
-        Response within 1 business day.
-      </p>
     </section>
 
     <footer>© <span id="y"></span> TaskFlow Dynamics • Public Works Documentation, Certified Payroll & Compliance Support</footer>
