@@ -13,9 +13,2757 @@
   :root{
     --paper:#F6F3EC;
     --paper-line:#DCD5C4;
-    --ink:#1F2A33;
+    --ink:#1F2A33;<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Construction Intelligence Services provides independent construction guidance that helps owners better understand their projects from planning through completion.">
+  <meta name="theme-color" content="#102c42">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Construction Intelligence Services">
+  <meta property="og:description" content="Independent construction guidance. Helping owners better understand their projects.">
+  <meta property="og:url" content="https://colondresdev.com/">
+  <title>Construction Intelligence Services | Independent Construction Guidance</title>
+  <style>
+    :root {
+      --ink: #102c42;
+      --ink-deep: #0a2031;
+      --blue: #1c5f83;
+      --blue-light: #d9e7ee;
+      --paper: #f7f5ef;
+      --paper-bright: #fffefa;
+      --white: #ffffff;
+      --line: #ccd8de;
+      --line-dark: rgba(255, 255, 255, 0.18);
+      --slate: #4e6473;
+      --accent: #d0a958;
+      --shadow: 0 18px 48px rgba(16, 44, 66, 0.10);
+      --radius: 4px;
+      --max-width: 1180px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper-bright);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--ink-deep);
+      transform: translateY(-160%);
+      transition: transform 160ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(16, 44, 66, 0.10);
+      background: rgba(255, 254, 250, 0.96);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-shell {
+      width: min(calc(100% - 40px), var(--max-width));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border: 1px solid var(--ink);
+      background:
+        linear-gradient(90deg, transparent 48%, rgba(28, 95, 131, 0.24) 49%, rgba(28, 95, 131, 0.24) 51%, transparent 52%),
+        linear-gradient(transparent 48%, rgba(28, 95, 131, 0.24) 49%, rgba(28, 95, 131, 0.24) 51%, transparent 52%);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      background: var(--ink);
+    }
+
+    .brand-mark::before {
+      width: 18px;
+      height: 1px;
+      top: 13px;
+      left: 11px;
+      box-shadow: 0 7px 0 var(--ink), 0 14px 0 var(--ink);
+    }
+
+    .brand-mark::after {
+      width: 1px;
+      height: 18px;
+      top: 11px;
+      left: 20px;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 1px;
+      line-height: 1.15;
+    }
+
+    .brand-copy strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-copy span {
+      color: var(--slate);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .site-nav a {
+      position: relative;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .site-nav a:not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -7px;
+      height: 1px;
+      background: var(--blue);
+      transition: right 180ms ease;
+    }
+
+    .site-nav a:hover::after,
+    .site-nav a:focus-visible::after {
+      right: 0;
+    }
+
+    .site-nav .nav-cta {
+      padding: 11px 16px;
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 1px;
+      margin: 5px auto;
+      background: currentColor;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"]::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"]::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      overflow: hidden;
+      color: var(--white);
+      background-color: var(--ink-deep);
+      background-image:
+        linear-gradient(rgba(122, 177, 204, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122, 177, 204, 0.08) 1px, transparent 1px),
+        linear-gradient(135deg, #102f47 0%, #0a2031 72%);
+      background-size: 44px 44px, 44px 44px, auto;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 640px;
+      height: 640px;
+      top: -260px;
+      right: -170px;
+      border: 1px solid rgba(208, 169, 88, 0.28);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 72px rgba(208, 169, 88, 0.025),
+        0 0 0 144px rgba(208, 169, 88, 0.018);
+    }
+
+    .hero-shell {
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 40px), var(--max-width));
+      min-height: 760px;
+      margin: 0 auto;
+      padding: 116px 0 92px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+      align-items: center;
+      gap: 84px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 22px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .hero h1 {
+      max-width: 840px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(54px, 7.2vw, 90px);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-top: 10px;
+      color: #a9cbdb;
+      font-style: italic;
+    }
+
+    .hero-intro {
+      max-width: 690px;
+      margin: 31px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .button {
+      min-height: 50px;
+      padding: 13px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border: 1px solid transparent;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .button::after {
+      content: "\2192";
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: var(--ink-deep);
+      background: var(--accent);
+    }
+
+    .button-secondary {
+      border-color: rgba(255, 255, 255, 0.36);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-note {
+      position: relative;
+      align-self: end;
+      margin-bottom: 24px;
+      padding: 32px 0 0 28px;
+      border-top: 1px solid var(--line-dark);
+      border-left: 1px solid var(--line-dark);
+    }
+
+    .hero-note::before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      top: -5px;
+      left: -5px;
+      border: 1px solid var(--accent);
+      background: var(--ink-deep);
+    }
+
+    .hero-note p {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1.42;
+    }
+
+    .hero-note small {
+      display: block;
+      margin-top: 22px;
+      color: rgba(255, 255, 255, 0.48);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 108px 0;
+    }
+
+    .section-shell {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      margin: 0 0 15px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 790px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+
+    .section-lead {
+      max-width: 710px;
+      margin: 23px 0 0;
+      color: var(--slate);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .intelligence-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 90px;
+      align-items: start;
+    }
+
+    .disciplines {
+      border-top: 1px solid var(--line);
+    }
+
+    .discipline {
+      padding: 21px 0;
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .discipline span {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+    }
+
+    .discipline strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .discipline em {
+      color: var(--slate);
+      font-size: 14px;
+      font-style: normal;
+    }
+
+    .intelligence-statement {
+      margin-top: 36px;
+      padding: 30px;
+      border-left: 3px solid var(--accent);
+      background: var(--paper);
+    }
+
+    .intelligence-statement p {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1.48;
+    }
+
+    .services {
+      background: var(--paper);
+    }
+
+    .services-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+      align-items: end;
+      gap: 56px;
+    }
+
+    .services-header .section-lead {
+      margin: 0;
+    }
+
+    .service-grid {
+      margin-top: 58px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 330px;
+      padding: 31px;
+      grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      background: var(--paper-bright);
+      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .service-card:hover {
+      z-index: 2;
+      border-color: rgba(28, 95, 131, 0.55);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card:nth-child(4),
+    .service-card:nth-child(5) {
+      grid-column: span 6;
+      min-height: 286px;
+    }
+
+    .service-number {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .service-number::after {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .service-card h3 {
+      margin: 26px 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.16;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--slate);
+      font-size: 15px;
+    }
+
+    .service-fee {
+      margin-top: auto;
+      padding-top: 25px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .service-fee strong {
+      color: var(--blue);
+      font-size: 16px;
+    }
+
+    .experience {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .experience::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+    }
+
+    .experience-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: 88px;
+    }
+
+    .experience .section-kicker {
+      color: var(--accent);
+    }
+
+    .experience .section-title {
+      max-width: 530px;
+    }
+
+    .experience-copy {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 17px;
+    }
+
+    .experience-copy p {
+      margin: 0 0 20px;
+    }
+
+    .experience-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .experience-metrics {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .metric {
+      padding: 34px 32px 35px 0;
+    }
+
+    .metric + .metric {
+      padding-left: 32px;
+      border-left: 1px solid var(--line-dark);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 11px;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .audience-grid {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .audience-item {
+      min-height: 138px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .audience-item span {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+    }
+
+    .audience-item strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .approach {
+      background: var(--paper);
+    }
+
+    .process-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .process-step {
+      position: relative;
+      min-height: 290px;
+      padding: 33px 30px 28px;
+      border-top: 2px solid var(--ink);
+      border-right: 1px solid var(--line);
+    }
+
+    .process-step:first-child {
+      border-left: 1px solid var(--line);
+    }
+
+    .process-step::before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      top: -6px;
+      left: 30px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      transform: rotate(45deg);
+    }
+
+    .process-step span {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+    }
+
+    .process-step h3 {
+      margin: 45px 0 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--slate);
+      font-size: 14px;
+    }
+
+    .contact {
+      padding: 94px 0;
+      color: var(--white);
+      background: var(--ink-deep);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact .section-kicker {
+      color: var(--accent);
+    }
+
+    .contact h2 {
+      max-width: 760px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .contact p {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 17px;
+    }
+
+    .contact-signature {
+      padding: 36px;
+      border: 1px solid var(--line-dark);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .contact-signature strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+
+    .contact-signature span {
+      display: block;
+      margin-top: 18px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .contact-signature a {
+      margin-top: 26px;
+    }
+
+    .site-footer {
+      color: rgba(255, 255, 255, 0.52);
+      background: #061824;
+    }
+
+    .footer-shell {
+      width: min(calc(100% - 40px), var(--max-width));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-shell a {
+      color: rgba(255, 255, 255, 0.72);
+      text-decoration: none;
+    }
+
+    .footer-shell a:hover,
+    .footer-shell a:focus-visible {
+      color: var(--white);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 980px) {
+      .site-nav {
+        position: fixed;
+        inset: 82px 0 auto;
+        padding: 30px 20px 36px;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 6px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper-bright);
+        box-shadow: 0 26px 48px rgba(10, 32, 49, 0.16);
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        padding: 13px;
+        font-size: 14px;
+      }
+
+      .site-nav a::after {
+        display: none;
+      }
+
+      .site-nav .nav-cta {
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-shell,
+      .intelligence-grid,
+      .experience-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-shell {
+        gap: 44px;
+      }
+
+      .hero-note {
+        max-width: 470px;
+        align-self: auto;
+        margin-bottom: 0;
+      }
+
+      .intelligence-grid,
+      .experience-grid,
+      .contact-grid {
+        gap: 54px;
+      }
+
+      .services-header {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .service-card,
+      .service-card:nth-child(4),
+      .service-card:nth-child(5) {
+        grid-column: span 6;
+      }
+
+      .service-card:last-child {
+        grid-column: 4 / span 6;
+      }
+
+      .audience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 0;
+      }
+
+      .process-step:nth-child(3) {
+        border-left: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-shell,
+      .hero-shell,
+      .section-shell,
+      .footer-shell {
+        width: min(calc(100% - 30px), var(--max-width));
+      }
+
+      .brand-copy strong {
+        max-width: 205px;
+        font-size: 15px;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .hero,
+      .hero-shell {
+        min-height: auto;
+      }
+
+      .hero-shell {
+        padding: 84px 0 70px;
+      }
+
+      .hero h1 {
+        font-size: clamp(46px, 14vw, 64px);
+      }
+
+      .hero-intro {
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-note {
+        margin-top: 8px;
+      }
+
+      .hero-note p {
+        font-size: 21px;
+      }
+
+      .section {
+        padding: 78px 0;
+      }
+
+      .section-title,
+      .contact h2 {
+        font-size: 40px;
+      }
+
+      .section-lead {
+        font-size: 17px;
+      }
+
+      .discipline {
+        grid-template-columns: 34px 1fr;
+      }
+
+      .discipline em {
+        grid-column: 2;
+        margin-top: 4px;
+      }
+
+      .service-card,
+      .service-card:nth-child(4),
+      .service-card:nth-child(5),
+      .service-card:last-child {
+        min-height: 300px;
+        grid-column: 1 / -1;
+      }
+
+      .experience-metrics,
+      .audience-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric + .metric {
+        padding-left: 0;
+        border-top: 1px solid var(--line-dark);
+        border-left: 0;
+      }
+
+      .process-grid {
+        gap: 24px;
+      }
+
+      .process-step,
+      .process-step:nth-child(3) {
+        min-height: 240px;
+        border-left: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contact-signature {
+        padding: 28px;
+      }
+
+      .footer-shell {
+        padding: 25px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .hero-actions,
+      .site-footer {
+        display: none;
+      }
+
+      .hero,
+      .experience,
+      .contact {
+        color: #000;
+        background: #fff;
+      }
+
+      .hero-shell {
+        min-height: auto;
+        padding: 48px 0;
+      }
+
+      .section,
+      .contact {
+        padding: 48px 0;
+      }
+
+      .service-card,
+      .process-step,
+      .audience-item {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="Construction Intelligence Services home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <strong>Construction Intelligence Services</strong>
+          <span>Independent Construction Guidance</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation">
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
+        <a href="#intelligence">What We Do</a>
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#approach">Our Approach</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-shell">
+        <div>
+          <p class="eyebrow">Construction Intelligence Services</p>
+          <h1 id="hero-title">Independent Construction <span>Guidance</span></h1>
+          <p class="hero-intro">Every construction project begins with an idea. As that idea becomes reality, it is shaped by hundreds of decisions, conversations, drawings, proposals, schedules, budgets, materials, and people.</p>
+          <p class="hero-intro">We help owners understand the information that guides those decisions—from planning through completion.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Schedule a Consultation</a>
+            <a class="button button-secondary" href="#services">Explore Services</a>
+          </div>
+        </div>
+
+        <aside class="hero-note" aria-label="Our purpose">
+          <p>Helping owners better understand their projects.</p>
+          <small>Our purpose</small>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="intelligence" aria-labelledby="intelligence-title">
+      <div class="section-shell intelligence-grid">
+        <div>
+          <p class="section-kicker">Construction Intelligence</p>
+          <h2 class="section-title" id="intelligence-title">An informed owner is an effective part of the project team.</h2>
+          <p class="section-lead">Whether planning a renovation, constructing a new facility, improving a workplace, or managing a community project, we help owners organize project information, understand available options, and evaluate important decisions throughout the construction process.</p>
+        </div>
+
+        <div>
+          <div class="disciplines" aria-label="Project professionals">
+            <div class="discipline">
+              <span>01</span>
+              <strong>Contractors</strong>
+              <em>build</em>
+            </div>
+            <div class="discipline">
+              <span>02</span>
+              <strong>Architects</strong>
+              <em>design</em>
+            </div>
+            <div class="discipline">
+              <span>03</span>
+              <strong>Engineers</strong>
+              <em>engineer</em>
+            </div>
+            <div class="discipline">
+              <span>04</span>
+              <strong>Inspectors</strong>
+              <em>verify compliance</em>
+            </div>
+          </div>
+          <div class="intelligence-statement">
+            <p>We do not replace the project team. We help owners become informed participants in it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="section-shell">
+        <div class="services-header">
+          <div>
+            <p class="section-kicker">Professional Services</p>
+            <h2 class="section-title" id="services-title">The appropriate level of guidance for your project.</h2>
+          </div>
+          <p class="section-lead">Services are available individually or throughout the life of a project. Every engagement includes a clearly defined scope and fee before work begins.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-number">Service 01</div>
+            <h3>Initial Project Review</h3>
+            <p>A focused review of proposals, contracts, contractor comparisons, or specific project questions.</p>
+            <div class="service-fee">Starting at <strong>$295</strong></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">Service 02</div>
+            <h3>Comprehensive Project Review</h3>
+            <p>A detailed review of project information including proposals, contracts, plans, scope, budgets, schedules, and supporting documentation.</p>
+            <div class="service-fee">Starting at <strong>$495</strong></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">Service 03</div>
+            <h3>Project Support</h3>
+            <p>Professional guidance during construction including progress reviews, payment reviews, change reviews, project documentation, and consultation.</p>
+            <div class="service-fee">Starting at <strong>$595</strong></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">Service 04</div>
+            <h3>Ongoing Project Support</h3>
+            <p>Scheduled guidance throughout construction for projects that benefit from continued professional involvement.</p>
+            <div class="service-fee">Starting at <strong>$795 per month</strong></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">Service 05</div>
+            <h3>Project Representation</h3>
+            <p>Professional construction management guidance from planning through completion.</p>
+            <div class="service-fee">Fee based on <strong>project scope</strong></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="section-shell experience-grid">
+        <div>
+          <p class="section-kicker">Why Construction Intelligence Services</p>
+          <h2 class="section-title" id="experience-title">Practical experience, applied with a clear objective.</h2>
+          <div class="experience-metrics" aria-label="Construction experience">
+            <div class="metric">
+              <strong>25+</strong>
+              <span>years managing public works construction projects</span>
+            </div>
+            <div class="metric">
+              <strong>10+</strong>
+              <span>years of residential construction experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-copy">
+          <p>Construction Intelligence Services is founded on practical construction management experience developed throughout more than three decades in the construction industry.</p>
+          <p>Our experience includes schools, colleges, parks, libraries, civic facilities, and other publicly funded projects, together with residential construction supporting homeowners, contractors, and property improvements.</p>
+          <p>Working with owners, architects, engineers, contractors, inspectors, and public agencies has provided a practical understanding of how successful projects are planned, communicated, documented, and completed.</p>
+          <p>That experience is applied with one objective: provide independent construction guidance that helps owners understand their projects, support informed decisions, and contribute to an organized and successful construction process.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="audience-title">
+      <div class="section-shell">
+        <p class="section-kicker">Who We Serve</p>
+        <h2 class="section-title" id="audience-title">Guidance for meaningful construction and improvement projects.</h2>
+        <div class="audience-grid">
+          <div class="audience-item"><span>01</span><strong>Homes</strong></div>
+          <div class="audience-item"><span>02</span><strong>Investment Properties</strong></div>
+          <div class="audience-item"><span>03</span><strong>Businesses</strong></div>
+          <div class="audience-item"><span>04</span><strong>Commercial Facilities</strong></div>
+          <div class="audience-item"><span>05</span><strong>Schools</strong></div>
+          <div class="audience-item"><span>06</span><strong>Churches</strong></div>
+          <div class="audience-item"><span>07</span><strong>Community Facilities</strong></div>
+          <div class="audience-item"><span>08</span><strong>Parks &amp; Playgrounds</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <div class="section-shell">
+        <p class="section-kicker">Our Approach</p>
+        <h2 class="section-title" id="approach-title">Every project begins with understanding.</h2>
+        <p class="section-lead">We begin by learning about your project, your objectives, and the questions that matter most to you. From there, we recommend the level of professional guidance that best supports your project.</p>
+
+        <div class="process-grid">
+          <article class="process-step">
+            <span>01 / Understand</span>
+            <h3>Begin with your project</h3>
+            <p>We learn about the project, available information, objectives, and the decisions ahead.</p>
+          </article>
+          <article class="process-step">
+            <span>02 / Define</span>
+            <h3>Establish the right scope</h3>
+            <p>We identify the level of review, support, or representation appropriate for the engagement.</p>
+          </article>
+          <article class="process-step">
+            <span>03 / Review</span>
+            <h3>Organize the information</h3>
+            <p>We review the relevant documents and provide clear professional observations and recommendations.</p>
+          </article>
+          <article class="process-step">
+            <span>04 / Support</span>
+            <h3>Move forward informed</h3>
+            <p>We help you understand available options and participate confidently in the construction process.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-shell contact-grid">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2 id="contact-title">Let’s begin with your project.</h2>
+          <p>Whether you are planning a project, reviewing proposals, comparing contractors, or looking for professional guidance during construction, we welcome the opportunity to learn about your project.</p>
+        </div>
+        <div class="contact-signature">
+          <strong>Construction Intelligence Services</strong>
+          <span>Independent Construction Guidance</span>
+          <a class="button button-primary" href="mailto:contact@colondresdev.com?subject=Construction%20Consultation%20Request">Schedule a Consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <span>&copy; <span id="year">2026</span> Construction Intelligence Services. All rights reserved.</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.querySelector('.site-nav');
+      var year = document.getElementById('year');
+
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+
+      if (!toggle || !nav) {
+        return;
+      }
+
+      function closeNavigation() {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        nav.classList.remove('open');
+        document.body.classList.remove('nav-open');
+      }
+
+      toggle.addEventListener('click', function () {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+        nav.classList.toggle('open', !expanded);
+        document.body.classList.toggle('nav-open', !expanded);
+      });
+
+      nav.addEventListener('click', function (event) {
+        if (event.target.closest('a')) {
+          closeNavigation();
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 980) {
+          closeNavigation();
+        }
+      });
+    }());
+  </script>
+</body>
+</html>
+
     --slate:#44525C;
-    --slate-soft:#6B7B85;
+    --slate-soft:#6B7B85;<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Construction Intelligence Services provides independent construction guidance that helps owners better understand their projects from planning through completion.">
+  <meta name="theme-color" content="#102c42">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Construction Intelligence Services">
+  <meta property="og:description" content="Independent construction guidance. Helping owners better understand their projects.">
+  <meta property="og:url" content="https://colondresdev.com/">
+  <title>Construction Intelligence Services | Independent Construction Guidance</title>
+  <style>
+    :root {
+      --ink: #102c42;
+      --ink-deep: #0a2031;
+      --blue: #1c5f83;
+      --blue-light: #d9e7ee;
+      --paper: #f7f5ef;
+      --paper-bright: #fffefa;
+      --white: #ffffff;
+      --line: #ccd8de;
+      --line-dark: rgba(255, 255, 255, 0.18);
+      --slate: #4e6473;
+      --accent: #d0a958;
+      --shadow: 0 18px 48px rgba(16, 44, 66, 0.10);
+      --radius: 4px;
+      --max-width: 1180px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper-bright);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--ink-deep);
+      transform: translateY(-160%);
+      transition: transform 160ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(16, 44, 66, 0.10);
+      background: rgba(255, 254, 250, 0.96);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-shell {
+      width: min(calc(100% - 40px), var(--max-width));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border: 1px solid var(--ink);
+      background:
+        linear-gradient(90deg, transparent 48%, rgba(28, 95, 131, 0.24) 49%, rgba(28, 95, 131, 0.24) 51%, transparent 52%),
+        linear-gradient(transparent 48%, rgba(28, 95, 131, 0.24) 49%, rgba(28, 95, 131, 0.24) 51%, transparent 52%);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      background: var(--ink);
+    }
+
+    .brand-mark::before {
+      width: 18px;
+      height: 1px;
+      top: 13px;
+      left: 11px;
+      box-shadow: 0 7px 0 var(--ink), 0 14px 0 var(--ink);
+    }
+
+    .brand-mark::after {
+      width: 1px;
+      height: 18px;
+      top: 11px;
+      left: 20px;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 1px;
+      line-height: 1.15;
+    }
+
+    .brand-copy strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-copy span {
+      color: var(--slate);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .site-nav a {
+      position: relative;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .site-nav a:not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -7px;
+      height: 1px;
+      background: var(--blue);
+      transition: right 180ms ease;
+    }
+
+    .site-nav a:hover::after,
+    .site-nav a:focus-visible::after {
+      right: 0;
+    }
+
+    .site-nav .nav-cta {
+      padding: 11px 16px;
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 1px;
+      margin: 5px auto;
+      background: currentColor;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"]::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"]::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      overflow: hidden;
+      color: var(--white);
+      background-color: var(--ink-deep);
+      background-image:
+        linear-gradient(rgba(122, 177, 204, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122, 177, 204, 0.08) 1px, transparent 1px),
+        linear-gradient(135deg, #102f47 0%, #0a2031 72%);
+      background-size: 44px 44px, 44px 44px, auto;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 640px;
+      height: 640px;
+      top: -260px;
+      right: -170px;
+      border: 1px solid rgba(208, 169, 88, 0.28);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 72px rgba(208, 169, 88, 0.025),
+        0 0 0 144px rgba(208, 169, 88, 0.018);
+    }
+
+    .hero-shell {
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 40px), var(--max-width));
+      min-height: 760px;
+      margin: 0 auto;
+      padding: 116px 0 92px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+      align-items: center;
+      gap: 84px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 22px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .hero h1 {
+      max-width: 840px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(54px, 7.2vw, 90px);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-top: 10px;
+      color: #a9cbdb;
+      font-style: italic;
+    }
+
+    .hero-intro {
+      max-width: 690px;
+      margin: 31px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .button {
+      min-height: 50px;
+      padding: 13px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border: 1px solid transparent;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .button::after {
+      content: "\2192";
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: var(--ink-deep);
+      background: var(--accent);
+    }
+
+    .button-secondary {
+      border-color: rgba(255, 255, 255, 0.36);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-note {
+      position: relative;
+      align-self: end;
+      margin-bottom: 24px;
+      padding: 32px 0 0 28px;
+      border-top: 1px solid var(--line-dark);
+      border-left: 1px solid var(--line-dark);
+    }
+
+    .hero-note::before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      top: -5px;
+      left: -5px;
+      border: 1px solid var(--accent);
+      background: var(--ink-deep);
+    }
+
+    .hero-note p {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1.42;
+    }
+
+    .hero-note small {
+      display: block;
+      margin-top: 22px;
+      color: rgba(255, 255, 255, 0.48);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 108px 0;
+    }
+
+    .section-shell {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      margin: 0 0 15px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 790px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+
+    .section-lead {
+      max-width: 710px;
+      margin: 23px 0 0;
+      color: var(--slate);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .intelligence-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 90px;
+      align-items: start;
+    }
+
+    .disciplines {
+      border-top: 1px solid var(--line);
+    }
+
+    .discipline {
+      padding: 21px 0;
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .discipline span {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+    }
+
+    .discipline strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .discipline em {
+      color: var(--slate);
+      font-size: 14px;
+      font-style: normal;
+    }
+
+    .intelligence-statement {
+      margin-top: 36px;
+      padding: 30px;
+      border-left: 3px solid var(--accent);
+      background: var(--paper);
+    }
+
+    .intelligence-statement p {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1.48;
+    }
+
+    .services {
+      background: var(--paper);
+    }
+
+    .services-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+      align-items: end;
+      gap: 56px;
+    }
+
+    .services-header .section-lead {
+      margin: 0;
+    }
+
+    .service-grid {
+      margin-top: 58px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 330px;
+      padding: 31px;
+      grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      background: var(--paper-bright);
+      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .service-card:hover {
+      z-index: 2;
+      border-color: rgba(28, 95, 131, 0.55);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card:nth-child(4),
+    .service-card:nth-child(5) {
+      grid-column: span 6;
+      min-height: 286px;
+    }
+
+    .service-number {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .service-number::after {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .service-card h3 {
+      margin: 26px 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.16;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--slate);
+      font-size: 15px;
+    }
+
+    .service-fee {
+      margin-top: auto;
+      padding-top: 25px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .service-fee strong {
+      color: var(--blue);
+      font-size: 16px;
+    }
+
+    .experience {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .experience::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+    }
+
+    .experience-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: 88px;
+    }
+
+    .experience .section-kicker {
+      color: var(--accent);
+    }
+
+    .experience .section-title {
+      max-width: 530px;
+    }
+
+    .experience-copy {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 17px;
+    }
+
+    .experience-copy p {
+      margin: 0 0 20px;
+    }
+
+    .experience-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .experience-metrics {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .metric {
+      padding: 34px 32px 35px 0;
+    }
+
+    .metric + .metric {
+      padding-left: 32px;
+      border-left: 1px solid var(--line-dark);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 11px;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .audience-grid {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .audience-item {
+      min-height: 138px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .audience-item span {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+    }
+
+    .audience-item strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .approach {
+      background: var(--paper);
+    }
+
+    .process-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .process-step {
+      position: relative;
+      min-height: 290px;
+      padding: 33px 30px 28px;
+      border-top: 2px solid var(--ink);
+      border-right: 1px solid var(--line);
+    }
+
+    .process-step:first-child {
+      border-left: 1px solid var(--line);
+    }
+
+    .process-step::before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      top: -6px;
+      left: 30px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      transform: rotate(45deg);
+    }
+
+    .process-step span {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+    }
+
+    .process-step h3 {
+      margin: 45px 0 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--slate);
+      font-size: 14px;
+    }
+
+    .contact {
+      padding: 94px 0;
+      color: var(--white);
+      background: var(--ink-deep);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact .section-kicker {
+      color: var(--accent);
+    }
+
+    .contact h2 {
+      max-width: 760px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .contact p {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 17px;
+    }
+
+    .contact-signature {
+      padding: 36px;
+      border: 1px solid var(--line-dark);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .contact-signature strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+
+    .contact-signature span {
+      display: block;
+      margin-top: 18px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .contact-signature a {
+      margin-top: 26px;
+    }
+
+    .site-footer {
+      color: rgba(255, 255, 255, 0.52);
+      background: #061824;
+    }
+
+    .footer-shell {
+      width: min(calc(100% - 40px), var(--max-width));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-shell a {
+      color: rgba(255, 255, 255, 0.72);
+      text-decoration: none;
+    }
+
+    .footer-shell a:hover,
+    .footer-shell a:focus-visible {
+      color: var(--white);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 980px) {
+      .site-nav {
+        position: fixed;
+        inset: 82px 0 auto;
+        padding: 30px 20px 36px;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 6px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper-bright);
+        box-shadow: 0 26px 48px rgba(10, 32, 49, 0.16);
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        padding: 13px;
+        font-size: 14px;
+      }
+
+      .site-nav a::after {
+        display: none;
+      }
+
+      .site-nav .nav-cta {
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-shell,
+      .intelligence-grid,
+      .experience-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-shell {
+        gap: 44px;
+      }
+
+      .hero-note {
+        max-width: 470px;
+        align-self: auto;
+        margin-bottom: 0;
+      }
+
+      .intelligence-grid,
+      .experience-grid,
+      .contact-grid {
+        gap: 54px;
+      }
+
+      .services-header {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .service-card,
+      .service-card:nth-child(4),
+      .service-card:nth-child(5) {
+        grid-column: span 6;
+      }
+
+      .service-card:last-child {
+        grid-column: 4 / span 6;
+      }
+
+      .audience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 0;
+      }
+
+      .process-step:nth-child(3) {
+        border-left: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-shell,
+      .hero-shell,
+      .section-shell,
+      .footer-shell {
+        width: min(calc(100% - 30px), var(--max-width));
+      }
+
+      .brand-copy strong {
+        max-width: 205px;
+        font-size: 15px;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .hero,
+      .hero-shell {
+        min-height: auto;
+      }
+
+      .hero-shell {
+        padding: 84px 0 70px;
+      }
+
+      .hero h1 {
+        font-size: clamp(46px, 14vw, 64px);
+      }
+
+      .hero-intro {
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-note {
+        margin-top: 8px;
+      }
+
+      .hero-note p {
+        font-size: 21px;
+      }
+
+      .section {
+        padding: 78px 0;
+      }
+
+      .section-title,
+      .contact h2 {
+        font-size: 40px;
+      }
+
+      .section-lead {
+        font-size: 17px;
+      }
+
+      .discipline {
+        grid-template-columns: 34px 1fr;
+      }
+
+      .discipline em {
+        grid-column: 2;
+        margin-top: 4px;
+      }
+
+      .service-card,
+      .service-card:nth-child(4),
+      .service-card:nth-child(5),
+      .service-card:last-child {
+        min-height: 300px;
+        grid-column: 1 / -1;
+      }
+
+      .experience-metrics,
+      .audience-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric + .metric {
+        padding-left: 0;
+        border-top: 1px solid var(--line-dark);
+        border-left: 0;
+      }
+
+      .process-grid {
+        gap: 24px;
+      }
+
+      .process-step,
+      .process-step:nth-child(3) {
+        min-height: 240px;
+        border-left: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contact-signature {
+        padding: 28px;
+      }
+
+      .footer-shell {
+        padding: 25px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .hero-actions,
+      .site-footer {
+        display: none;
+      }
+
+      .hero,
+      .experience,
+      .contact {
+        color: #000;
+        background: #fff;
+      }
+
+      .hero-shell {
+        min-height: auto;
+        padding: 48px 0;
+      }
+
+      .section,
+      .contact {
+        padding: 48px 0;
+      }
+
+      .service-card,
+      .process-step,
+      .audience-item {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="Construction Intelligence Services home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <strong>Construction Intelligence Services</strong>
+          <span>Independent Construction Guidance</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation">
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
+        <a href="#intelligence">What We Do</a>
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#approach">Our Approach</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-shell">
+        <div>
+          <p class="eyebrow">Construction Intelligence Services</p>
+          <h1 id="hero-title">Independent Construction <span>Guidance</span></h1>
+          <p class="hero-intro">Every construction project begins with an idea. As that idea becomes reality, it is shaped by hundreds of decisions, conversations, drawings, proposals, schedules, budgets, materials, and people.</p>
+          <p class="hero-intro">We help owners understand the information that guides those decisions—from planning through completion.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Schedule a Consultation</a>
+            <a class="button button-secondary" href="#services">Explore Services</a>
+          </div>
+        </div>
+
+        <aside class="hero-note" aria-label="Our purpose">
+          <p>Helping owners better understand their projects.</p>
+          <small>Our purpose</small>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="intelligence" aria-labelledby="intelligence-title">
+      <div class="section-shell intelligence-grid">
+        <div>
+          <p class="section-kicker">Construction Intelligence</p>
+          <h2 class="section-title" id="intelligence-title">An informed owner is an effective part of the project team.</h2>
+          <p class="section-lead">Whether planning a renovation, constructing a new facility, improving a workplace, or managing a community project, we help owners organize project information, understand available options, and evaluate important decisions throughout the construction process.</p>
+        </div>
+
+        <div>
+          <div class="disciplines" aria-label="Project professionals">
+            <div class="discipline">
+              <span>01</span>
+              <strong>Contractors</strong>
+              <em>build</em>
+            </div>
+            <div class="discipline">
+              <span>02</span>
+              <strong>Architects</strong>
+              <em>design</em>
+            </div>
+            <div class="discipline">
+              <span>03</span>
+              <strong>Engineers</strong>
+              <em>engineer</em>
+            </div>
+            <div class="discipline">
+              <span>04</span>
+              <strong>Inspectors</strong>
+              <em>verify compliance</em>
+            </div>
+          </div>
+          <div class="intelligence-statement">
+            <p>We do not replace the project team. We help owners become informed participants in it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="section-shell">
+        <div class="services-header">
+          <div>
+            <p class="section-kicker">Professional Services</p>
+            <h2 class="section-title" id="services-title">The appropriate level of guidance for your project.</h2>
+          </div>
+          <p class="section-lead">Services are available individually or throughout the life of a project. Every engagement includes a clearly defined scope and fee before work begins.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-number">Service 01</div>
+            <h3>Initial Project Review</h3>
+            <p>A focused review of proposals, contracts, contractor comparisons, or specific project questions.</p>
+            <div class="service-fee">Starting at <strong>$295</strong></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">Service 02</div>
+            <h3>Comprehensive Project Review</h3>
+            <p>A detailed review of project information including proposals, contracts, plans, scope, budgets, schedules, and supporting documentation.</p>
+            <div class="service-fee">Starting at <strong>$495</strong></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">Service 03</div>
+            <h3>Project Support</h3>
+            <p>Professional guidance during construction including progress reviews, payment reviews, change reviews, project documentation, and consultation.</p>
+            <div class="service-fee">Starting at <strong>$595</strong></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">Service 04</div>
+            <h3>Ongoing Project Support</h3>
+            <p>Scheduled guidance throughout construction for projects that benefit from continued professional involvement.</p>
+            <div class="service-fee">Starting at <strong>$795 per month</strong></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">Service 05</div>
+            <h3>Project Representation</h3>
+            <p>Professional construction management guidance from planning through completion.</p>
+            <div class="service-fee">Fee based on <strong>project scope</strong></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="section-shell experience-grid">
+        <div>
+          <p class="section-kicker">Why Construction Intelligence Services</p>
+          <h2 class="section-title" id="experience-title">Practical experience, applied with a clear objective.</h2>
+          <div class="experience-metrics" aria-label="Construction experience">
+            <div class="metric">
+              <strong>25+</strong>
+              <span>years managing public works construction projects</span>
+            </div>
+            <div class="metric">
+              <strong>10+</strong>
+              <span>years of residential construction experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-copy">
+          <p>Construction Intelligence Services is founded on practical construction management experience developed throughout more than three decades in the construction industry.</p>
+          <p>Our experience includes schools, colleges, parks, libraries, civic facilities, and other publicly funded projects, together with residential construction supporting homeowners, contractors, and property improvements.</p>
+          <p>Working with owners, architects, engineers, contractors, inspectors, and public agencies has provided a practical understanding of how successful projects are planned, communicated, documented, and completed.</p>
+          <p>That experience is applied with one objective: provide independent construction guidance that helps owners understand their projects, support informed decisions, and contribute to an organized and successful construction process.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="audience-title">
+      <div class="section-shell">
+        <p class="section-kicker">Who We Serve</p>
+        <h2 class="section-title" id="audience-title">Guidance for meaningful construction and improvement projects.</h2>
+        <div class="audience-grid">
+          <div class="audience-item"><span>01</span><strong>Homes</strong></div>
+          <div class="audience-item"><span>02</span><strong>Investment Properties</strong></div>
+          <div class="audience-item"><span>03</span><strong>Businesses</strong></div>
+          <div class="audience-item"><span>04</span><strong>Commercial Facilities</strong></div>
+          <div class="audience-item"><span>05</span><strong>Schools</strong></div>
+          <div class="audience-item"><span>06</span><strong>Churches</strong></div>
+          <div class="audience-item"><span>07</span><strong>Community Facilities</strong></div>
+          <div class="audience-item"><span>08</span><strong>Parks &amp; Playgrounds</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <div class="section-shell">
+        <p class="section-kicker">Our Approach</p>
+        <h2 class="section-title" id="approach-title">Every project begins with understanding.</h2>
+        <p class="section-lead">We begin by learning about your project, your objectives, and the questions that matter most to you. From there, we recommend the level of professional guidance that best supports your project.</p>
+
+        <div class="process-grid">
+          <article class="process-step">
+            <span>01 / Understand</span>
+            <h3>Begin with your project</h3>
+            <p>We learn about the project, available information, objectives, and the decisions ahead.</p>
+          </article>
+          <article class="process-step">
+            <span>02 / Define</span>
+            <h3>Establish the right scope</h3>
+            <p>We identify the level of review, support, or representation appropriate for the engagement.</p>
+          </article>
+          <article class="process-step">
+            <span>03 / Review</span>
+            <h3>Organize the information</h3>
+            <p>We review the relevant documents and provide clear professional observations and recommendations.</p>
+          </article>
+          <article class="process-step">
+            <span>04 / Support</span>
+            <h3>Move forward informed</h3>
+            <p>We help you understand available options and participate confidently in the construction process.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-shell contact-grid">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2 id="contact-title">Let’s begin with your project.</h2>
+          <p>Whether you are planning a project, reviewing proposals, comparing contractors, or looking for professional guidance during construction, we welcome the opportunity to learn about your project.</p>
+        </div>
+        <div class="contact-signature">
+          <strong>Construction Intelligence Services</strong>
+          <span>Independent Construction Guidance</span>
+          <a class="button button-primary" href="mailto:contact@colondresdev.com?subject=Construction%20Consultation%20Request">Schedule a Consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <span>&copy; <span id="year">2026</span> Construction Intelligence Services. All rights reserved.</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.querySelector('.site-nav');
+      var year = document.getElementById('year');
+
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+
+      if (!toggle || !nav) {
+        return;
+      }
+
+      function closeNavigation() {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        nav.classList.remove('open');
+        document.body.classList.remove('nav-open');
+      }
+
+      toggle.addEventListener('click', function () {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+        nav.classList.toggle('open', !expanded);
+        document.body.classList.toggle('nav-open', !expanded);
+      });
+
+      nav.addEventListener('click', function (event) {
+        if (event.target.closest('a')) {
+          closeNavigation();
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 980) {
+          closeNavigation();
+        }
+      });
+    }());
+  </script>
+</body>
+</html>
+
     --amber:#B5762A;
     --amber-soft:#DDBE94;
     --blueprint:#26343E;
