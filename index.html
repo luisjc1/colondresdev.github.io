@@ -99,6 +99,96 @@
     .plain-action{border:0;padding:0;background:transparent;color:var(--ink);text-decoration:underline;cursor:pointer;font-weight:700}
     .plain-action:hover,.plain-action:focus-visible{text-decoration:none}
 
+    body.call-panel-open{overflow:hidden}
+
+    .call-overlay{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(14,20,26,.58);
+    }
+
+    .call-overlay.is-open{display:flex}
+
+    .call-panel{
+      position:relative;
+      width:min(100%,440px);
+      background:#fff;
+      color:var(--ink);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:30px;
+      box-shadow:0 24px 70px rgba(0,0,0,.22);
+      text-align:left;
+    }
+
+    .call-panel-close{
+      position:absolute;
+      top:12px;
+      right:12px;
+      width:40px;
+      height:40px;
+      border:0;
+      border-radius:999px;
+      background:var(--soft);
+      color:var(--ink);
+      font-size:1.35rem;
+      line-height:1;
+      cursor:pointer;
+    }
+
+    .call-panel-close:hover,.call-panel-close:focus-visible{background:#ebe6df}
+
+    .call-panel h2{
+      margin-right:34px;
+      font-size:clamp(1.8rem,4vw,2.35rem);
+    }
+
+    .call-panel-text{color:var(--text)}
+
+    .call-number{
+      margin:20px 0 6px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:2rem;
+      line-height:1.1;
+      letter-spacing:-.02em;
+    }
+
+    .call-panel-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .call-panel-actions .btn{width:100%}
+
+    .call-panel-dismiss{
+      display:block;
+      width:100%;
+      margin-top:10px;
+      min-height:44px;
+      border:0;
+      background:transparent;
+      color:var(--text);
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .call-panel-dismiss:hover,.call-panel-dismiss:focus-visible{text-decoration:underline}
+
+    .copy-status{
+      min-height:1.35em;
+      margin:12px 0 0;
+      color:var(--text);
+      font-size:.9rem;
+      text-align:center;
+    }
+
     .faq{max-width:880px}
     details{border-bottom:1px solid var(--line);padding:17px 0}
     summary{font-weight:800;cursor:pointer}
@@ -134,6 +224,8 @@
       .mobile-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line)}
       .mobile-action{min-height:58px;display:flex;align-items:center;justify-content:center;border:0;background:#fff;color:var(--ink);font-weight:900;cursor:pointer}
       .mobile-action:first-child{background:var(--ink);color:#fff}
+      .call-panel{padding:26px 22px}
+      .call-panel-actions{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -155,7 +247,7 @@
         <button class="nav-button" type="button" onclick="goToSection('review','review_click')">$299 Review</button>
         <button class="nav-button" type="button" onclick="goToSection('about')">About Luis</button>
         <button class="nav-button" type="button" onclick="goToSection('letter','letter_click')">Received a Letter?</button>
-        <button class="nav-button nav-call" type="button" onclick="callLuis()">Call Luis</button>
+        <button class="nav-button nav-call" type="button" onclick="callLuis(this)">Call Luis</button>
       </nav>
     </div>
   </header>
@@ -169,7 +261,7 @@
           <p class="lead">I help property owners understand scope, payments, change orders, schedules, permits, inspections and project documents before important decisions become difficult or expensive to reverse.</p>
 
           <div class="actions">
-            <button class="btn primary" type="button" onclick="callLuis()">Call Luis: (661) 904 6885</button>
+            <button class="btn primary" type="button" onclick="callLuis(this)">Call Luis: (661) 904 6885</button>
             <button class="btn secondary" type="button" onclick="goToSection('review','review_click')">See the $299 Review</button>
           </div>
 
@@ -243,7 +335,7 @@
           <p>No obligation to hire me afterward.</p>
 
           <button class="btn primary" type="button" onclick="emailLuis('Owner Construction Review Request','review_request')">Request the Review</button>
-          <button class="btn secondary" type="button" onclick="callLuis()">Call First</button>
+          <button class="btn secondary" type="button" onclick="callLuis(this)">Call First</button>
         </aside>
       </div>
     </section>
@@ -274,7 +366,7 @@
           <p>There is no obligation to hire me. You do not need to provide payment or documents simply to speak with me.</p>
 
           <div class="actions">
-            <button class="btn primary" type="button" onclick="callLuis()">Call Luis: (661) 904 6885</button>
+            <button class="btn primary" type="button" onclick="callLuis(this)">Call Luis: (661) 904 6885</button>
           </div>
         </div>
       </div>
@@ -293,7 +385,7 @@
           <p>I now apply that experience directly for property owners who want an experienced, independent perspective before making important construction decisions.</p>
           <p><strong>Luis Joaquin Colondres</strong><br>Construction and Project Management for Property Owners</p>
           <p>
-            <button class="plain-action" type="button" onclick="callLuis()">(661) 904 6885</button><br>
+            <button class="plain-action" type="button" onclick="callLuis(this)">(661) 904 6885</button><br>
             <button class="plain-action" type="button" onclick="emailLuis('Construction Project Question','click_email')">ljc@colondresdev.com</button>
           </p>
         </div>
@@ -323,7 +415,7 @@
         <p>If you are facing a payment, change order, scope question, schedule issue or another important project decision, call me first.</p>
 
         <div class="actions">
-          <button class="btn primary" type="button" onclick="callLuis()">Call Luis: (661) 904 6885</button>
+          <button class="btn primary" type="button" onclick="callLuis(this)">Call Luis: (661) 904 6885</button>
           <button class="btn secondary" type="button" onclick="emailLuis('Construction Project Question','click_email')">Email Luis</button>
         </div>
       </div>
@@ -336,7 +428,7 @@
         <strong style="color:#fff">Construction Intelligence Services</strong><br>
         Luis Joaquin Colondres
         <div class="footer-contact">
-          <button class="footer-action" type="button" onclick="callLuis()">(661) 904 6885</button>
+          <button class="footer-action" type="button" onclick="callLuis(this)">(661) 904 6885</button>
           <span>|</span>
           <button class="footer-action" type="button" onclick="emailLuis('Construction Project Question','click_email')">ljc@colondresdev.com</button>
         </div>
@@ -346,8 +438,24 @@
     </div>
   </footer>
 
+  <div class="call-overlay" id="callOverlay" aria-hidden="true" onclick="handleCallOverlayClick(event)">
+    <section class="call-panel" role="dialog" aria-modal="true" aria-labelledby="callPanelTitle" aria-describedby="callPanelText">
+      <button class="call-panel-close" id="callPanelClose" type="button" aria-label="Close call options" onclick="closeCallPanel()">&times;</button>
+      <p class="eyebrow">Call Luis</p>
+      <h2 id="callPanelTitle">Ready to talk about your project?</h2>
+      <p class="call-panel-text" id="callPanelText">On a computer, you can copy the number or open FaceTime. On a phone, the Call Luis buttons dial directly.</p>
+      <div class="call-number">(661) 904 6885</div>
+      <div class="call-panel-actions">
+        <button class="btn primary" id="copyPhoneButton" type="button" onclick="copyPhoneNumber()">Copy Number</button>
+        <button class="btn secondary" type="button" onclick="openFaceTime()">Open FaceTime</button>
+      </div>
+      <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+      <button class="call-panel-dismiss" type="button" onclick="closeCallPanel()">Close</button>
+    </section>
+  </div>
+
   <div class="mobile-bar" aria-label="Mobile actions">
-    <button class="mobile-action" type="button" onclick="callLuis()">Call Luis</button>
+    <button class="mobile-action" type="button" onclick="callLuis(this)">Call Luis</button>
     <button class="mobile-action" type="button" onclick="goToSection('review','review_click')">$299 Review</button>
   </div>
 
@@ -377,10 +485,115 @@
       }
     }
 
-    function callLuis(){
-      trackEvent('click_call', {phone:'6619046885'});
-      window.location.href = 'tel:+16619046885';
+    var PHONE_DISPLAY = '(661) 904 6885';
+    var PHONE_E164 = '+16619046885';
+    var lastCallTrigger = null;
+
+    function isMobileDevice(){
+      var ua = navigator.userAgent || navigator.vendor || window.opera || '';
+      var uaDataMobile = navigator.userAgentData && navigator.userAgentData.mobile === true;
+      var iPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+      return uaDataMobile || iPadOS || /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(ua);
     }
+
+    function callLuis(trigger){
+      var mobile = isMobileDevice();
+      trackEvent('click_call', {phone:'6619046885', mode:mobile ? 'mobile_dial' : 'desktop_panel'});
+
+      if(mobile){
+        window.location.href = 'tel:' + PHONE_E164;
+        return;
+      }
+
+      lastCallTrigger = trigger || document.activeElement;
+      openCallPanel();
+    }
+
+    function openCallPanel(){
+      var overlay = document.getElementById('callOverlay');
+      var status = document.getElementById('copyStatus');
+      var copyButton = document.getElementById('copyPhoneButton');
+      if(!overlay) return;
+
+      if(status) status.textContent = '';
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden','false');
+      document.body.classList.add('call-panel-open');
+
+      window.setTimeout(function(){
+        if(copyButton) copyButton.focus();
+      }, 0);
+    }
+
+    function closeCallPanel(){
+      var overlay = document.getElementById('callOverlay');
+      if(!overlay) return;
+
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden','true');
+      document.body.classList.remove('call-panel-open');
+
+      if(lastCallTrigger && typeof lastCallTrigger.focus === 'function'){
+        window.setTimeout(function(){ lastCallTrigger.focus(); }, 0);
+      }
+    }
+
+    function handleCallOverlayClick(event){
+      if(event.target === event.currentTarget){
+        closeCallPanel();
+      }
+    }
+
+    function fallbackCopyPhoneNumber(){
+      var field = document.createElement('textarea');
+      field.value = PHONE_DISPLAY;
+      field.setAttribute('readonly','');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.appendChild(field);
+      field.select();
+      var copied = false;
+      try{
+        copied = document.execCommand('copy');
+      }catch(e){}
+      document.body.removeChild(field);
+      return copied;
+    }
+
+    function showCopyStatus(message){
+      var status = document.getElementById('copyStatus');
+      if(status) status.textContent = message;
+    }
+
+    function copyPhoneNumber(){
+      trackEvent('copy_phone', {phone:'6619046885'});
+
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(PHONE_DISPLAY).then(function(){
+          showCopyStatus('Number copied: ' + PHONE_DISPLAY);
+        }).catch(function(){
+          var copied = fallbackCopyPhoneNumber();
+          showCopyStatus(copied ? 'Number copied: ' + PHONE_DISPLAY : 'Please copy: ' + PHONE_DISPLAY);
+        });
+      }else{
+        var copied = fallbackCopyPhoneNumber();
+        showCopyStatus(copied ? 'Number copied: ' + PHONE_DISPLAY : 'Please copy: ' + PHONE_DISPLAY);
+      }
+    }
+
+    function openFaceTime(){
+      trackEvent('open_facetime', {phone:'6619046885'});
+      window.location.href = 'facetime://' + PHONE_E164;
+    }
+
+    document.addEventListener('keydown', function(event){
+      if(event.key === 'Escape'){
+        var overlay = document.getElementById('callOverlay');
+        if(overlay && overlay.classList.contains('is-open')){
+          closeCallPanel();
+        }
+      }
+    });
 
     function emailLuis(subject, eventName){
       trackEvent(eventName || 'click_email', {subject:subject || ''});
