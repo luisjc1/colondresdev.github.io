@@ -99,6 +99,29 @@
     .plain-action{border:0;padding:0;background:transparent;color:var(--ink);text-decoration:underline;cursor:pointer;font-weight:700}
     .plain-action:hover,.plain-action:focus-visible{text-decoration:none}
 
+    .contact-section{background:#fff}
+    .contact-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:42px;align-items:start}
+    .contact-intro{margin-bottom:0}
+    .contact-note{margin-top:26px}
+    .contact-note p{color:var(--text);margin:6px 0 16px}
+    .contact-card{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:30px}
+    .contact-form{display:grid;gap:18px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-field{display:grid;gap:7px}
+    .form-field label{font-size:.9rem;font-weight:800;color:var(--ink)}
+    .optional{font-weight:500;color:var(--text)}
+    .form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid #cfc8be;border-radius:10px;background:#fff;color:var(--ink);font:inherit;padding:12px 13px;outline:none}
+    .form-field input,.form-field select{min-height:48px}
+    .form-field textarea{resize:vertical;min-height:140px}
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(145,108,58,.13)}
+    .contact-submit{width:100%;margin-top:2px}
+    .contact-submit:disabled{opacity:.6;cursor:wait;transform:none}
+    .form-status{min-height:1.4em;margin:0;font-size:.93rem;font-weight:700}
+    .form-status.success{color:#2f6b3b}
+    .form-status.error{color:#9b2c2c}
+    .form-privacy{margin:0;color:var(--text);font-size:.82rem}
+    .honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+
     body.call-panel-open{overflow:hidden}
 
     .call-overlay{
@@ -210,7 +233,7 @@
 
     @media(max-width:900px){
       nav .nav-button:not(.nav-call){display:none}
-      .hero-grid,.offer,.split{grid-template-columns:1fr}
+      .hero-grid,.offer,.split,.contact-grid{grid-template-columns:1fr}
       .issues{grid-template-columns:1fr 1fr}
       .trust-grid{grid-template-columns:1fr 1fr}
     }
@@ -226,6 +249,8 @@
       .mobile-action:first-child{background:var(--ink);color:#fff}
       .call-panel{padding:26px 22px}
       .call-panel-actions{grid-template-columns:1fr}
+      .contact-card{padding:22px}
+      .form-row{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -247,6 +272,7 @@
         <button class="nav-button" type="button" onclick="goToSection('review','review_click')">$299 Review</button>
         <button class="nav-button" type="button" onclick="goToSection('about')">About Luis</button>
         <button class="nav-button" type="button" onclick="goToSection('letter','letter_click')">Received a Letter?</button>
+        <button class="nav-button" type="button" onclick="openContact('General project question','contact_click')">Contact</button>
         <button class="nav-button nav-call" type="button" onclick="callLuis(this)">Call Luis</button>
       </nav>
     </div>
@@ -334,7 +360,7 @@
           <p>Before you send project documents, I provide a short service agreement that includes a confidentiality provision.</p>
           <p>No obligation to hire me afterward.</p>
 
-          <button class="btn primary" type="button" onclick="emailLuis('Owner Construction Review Request','review_request')">Request the Review</button>
+          <button class="btn primary" type="button" onclick="openContact('$299 Owner Construction Review','review_click')">Request the Review</button>
           <button class="btn secondary" type="button" onclick="callLuis(this)">Call First</button>
         </aside>
       </div>
@@ -386,8 +412,77 @@
           <p><strong>Luis Joaquin Colondres</strong><br>Construction and Project Management for Property Owners</p>
           <p>
             <button class="plain-action" type="button" onclick="callLuis(this)">(661) 904 6885</button><br>
-            <button class="plain-action" type="button" onclick="emailLuis('Construction Project Question','click_email')">ljc@colondresdev.com</button>
+            <span>ljc@colondresdev.com</span>
           </p>
+          <button class="btn secondary" type="button" onclick="openContact('General project question','contact_click')">Send Luis a Message</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="wrap contact-grid">
+        <div class="section-head contact-intro">
+          <p class="eyebrow">Contact Luis</p>
+          <h2>Send a message without leaving the website.</h2>
+          <p>Tell me what is happening with your project and what decision you are facing. I will respond directly.</p>
+          <div class="contact-note card">
+            <strong>Prefer to talk?</strong>
+            <p>There is no charge for the initial conversation.</p>
+            <button class="btn primary" type="button" onclick="callLuis(this)">Call Luis: (661) 904 6885</button>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <form id="contactForm" class="contact-form" action="https://formsubmit.co/ljc@colondresdev.com" method="POST">
+            <input type="hidden" name="_subject" value="New inquiry from colondresdev.com">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_url" value="https://colondresdev.com/">
+            <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contactName">Name <span aria-hidden="true">*</span></label>
+                <input id="contactName" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="form-field">
+                <label for="contactEmail">Email <span aria-hidden="true">*</span></label>
+                <input id="contactEmail" name="email" type="email" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contactPhone">Phone <span class="optional">optional</span></label>
+                <input id="contactPhone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="form-field">
+                <label for="contactLocation">Project city <span class="optional">optional</span></label>
+                <input id="contactLocation" name="project_city" type="text" autocomplete="address-level2">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="contactReason">What can I help with? <span aria-hidden="true">*</span></label>
+              <select id="contactReason" name="reason" required>
+                <option value="">Choose one</option>
+                <option value="$299 Owner Construction Review">$299 Owner Construction Review</option>
+                <option value="Payment or change order">Payment or change order</option>
+                <option value="Schedule, permit or inspection issue">Schedule, permit or inspection issue</option>
+                <option value="Received a letter">I received a letter from Luis</option>
+                <option value="General project question">General project question</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="contactMessage">Message <span aria-hidden="true">*</span></label>
+              <textarea id="contactMessage" name="message" rows="6" required placeholder="Briefly describe the project and the decision or concern you are facing."></textarea>
+            </div>
+
+            <button class="btn primary contact-submit" id="contactSubmit" type="submit">Send Message</button>
+            <p class="form-status" id="contactStatus" aria-live="polite"></p>
+            <p class="form-privacy">Your information is used only to respond to your inquiry. Do not send sensitive project documents through this form. We can arrange document delivery after we speak.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -416,7 +511,7 @@
 
         <div class="actions">
           <button class="btn primary" type="button" onclick="callLuis(this)">Call Luis: (661) 904 6885</button>
-          <button class="btn secondary" type="button" onclick="emailLuis('Construction Project Question','click_email')">Email Luis</button>
+          <button class="btn secondary" type="button" onclick="openContact('General project question','contact_click')">Send a Message</button>
         </div>
       </div>
     </section>
@@ -430,7 +525,9 @@
         <div class="footer-contact">
           <button class="footer-action" type="button" onclick="callLuis(this)">(661) 904 6885</button>
           <span>|</span>
-          <button class="footer-action" type="button" onclick="emailLuis('Construction Project Question','click_email')">ljc@colondresdev.com</button>
+          <span>ljc@colondresdev.com</span>
+          <span>|</span>
+          <button class="footer-action" type="button" onclick="openContact('General project question','contact_click')">Contact</button>
         </div>
       </div>
 
@@ -595,11 +692,99 @@
       }
     });
 
-    function emailLuis(subject, eventName){
-      trackEvent(eventName || 'click_email', {subject:subject || ''});
-      var finalSubject = encodeURIComponent(subject || 'Construction Project Question');
-      window.location.href = 'mailto:ljc@colondresdev.com?subject=' + finalSubject;
+    function openContact(reason, eventName){
+      if(eventName){
+        trackEvent(eventName, {reason:reason || ''});
+      }
+
+      var select = document.getElementById('contactReason');
+      if(select && reason){
+        select.value = reason;
+      }
+
+      var section = document.getElementById('contact');
+      if(section){
+        section.scrollIntoView({behavior:'smooth', block:'start'});
+        window.setTimeout(function(){
+          var nameField = document.getElementById('contactName');
+          if(nameField) nameField.focus({preventScroll:true});
+        }, 500);
+      }
     }
+
+    async function submitContactForm(event){
+      event.preventDefault();
+
+      var form = event.currentTarget;
+      var submitButton = document.getElementById('contactSubmit');
+      var status = document.getElementById('contactStatus');
+      var reasonField = document.getElementById('contactReason');
+      var originalText = submitButton ? submitButton.textContent : 'Send Message';
+
+      if(status){
+        status.textContent = '';
+        status.className = 'form-status';
+      }
+
+      if(submitButton){
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+      }
+
+      try{
+        var formData = new FormData(form);
+        var payload = {};
+        formData.forEach(function(value, key){ payload[key] = value; });
+        payload._url = window.location.href;
+        payload._replyto = payload.email || '';
+
+        var response = await fetch('https://formsubmit.co/ajax/ljc@colondresdev.com', {
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json',
+            'Accept':'application/json'
+          },
+          body:JSON.stringify(payload)
+        });
+
+        var data = {};
+        try{ data = await response.json(); }catch(e){}
+
+        if(!response.ok){
+          throw new Error(data.message || 'Unable to send message');
+        }
+
+        var reason = reasonField ? reasonField.value : '';
+        trackEvent('contact_submit', {reason:reason || 'not_selected'});
+        if(reason === '$299 Owner Construction Review'){
+          trackEvent('review_request', {source:'contact_form'});
+        }
+
+        form.reset();
+        if(status){
+          status.textContent = 'Message sent. Luis will respond directly.';
+          status.className = 'form-status success';
+        }
+      }catch(error){
+        trackEvent('contact_error', {message:(error && error.message) ? error.message : 'unknown'});
+        if(status){
+          status.textContent = 'The message did not send. Please call Luis at (661) 904 6885.';
+          status.className = 'form-status error';
+        }
+      }finally{
+        if(submitButton){
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var form = document.getElementById('contactForm');
+      if(form){
+        form.addEventListener('submit', submitContactForm);
+      }
+    });
   </script>
 </body>
 </html>
