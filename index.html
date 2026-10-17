@@ -98,10 +98,39 @@
     .case-purpose{margin:0;padding:16px 18px;background:var(--soft);border-radius:10px;color:var(--ink)!important;font-weight:700}
 
     .about-layout{display:grid;grid-template-columns:.66fr 1.34fr;gap:42px;align-items:start}
-    .about-identity{border:1px solid var(--line);border-radius:18px;padding:30px;background:linear-gradient(180deg,#f8f5ef,#fff);min-height:320px;display:flex;flex-direction:column;justify-content:flex-end}
-    .about-monogram{font-family:Georgia,"Times New Roman",serif;font-size:5.2rem;line-height:1;color:var(--accent);margin-bottom:auto}
-    .about-identity strong{font-size:1.15rem}
-    .about-identity span{color:var(--text);font-size:.9rem}
+   .about-identity{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:34px;
+  background:linear-gradient(180deg,#f8f5ef,#fff);
+  min-height:320px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.about-monogram{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:4.6rem;
+  line-height:1;
+  color:var(--accent);
+  margin-bottom:42px;
+}
+
+.about-identity .eyebrow{
+  margin-bottom:18px;
+}
+
+.about-identity strong{
+  font-size:1.18rem;
+  margin-bottom:4px;
+}
+
+.about-identity span{
+  color:var(--text);
+  font-size:.9rem;
+}
+
     
     .about-copy h3{font-family:Georgia,"Times New Roman",serif;font-size:2rem;font-weight:500;line-height:1.15;margin:0 0 16px}
     .about-copy p{color:var(--text)}
@@ -363,8 +392,7 @@
           <p class="eyebrow">Selected construction experience</p>
           <h2>Experience behind the advice.</h2>
           <p>Before offering independent guidance directly to property owners, I spent more than 25 years working in construction and project management from both the contractor side and the owner side.</p>
-          <p>That background includes public education, higher education, athletics, civic facilities and major venue construction, with hands on responsibility for contracts, cost, schedule, field coordination, documentation, changes, inspections and closeout.</p>
-        </div>
+<p>That experience spans public education, higher education, athletics, civic facilities and major venues, with direct responsibility for contracts, cost, schedule, field coordination, documentation, changes, inspections and closeout.</p>        </div>
 
         <div class="experience-proof">
           <h3>Selected project experience includes</h3>
@@ -494,9 +522,10 @@
           <p>I am not affiliated with the City, the permitting agency or your contractor. I contact selected property owners whose permitted projects appear substantial enough that independent owner side guidance may be useful.</p>
           <p>I'll be happy to answer your questions. There is no obligation.</p>
 
-          <div class="actions">
-            <button class="btn primary" type="button" onclick="callLuis(this)">(661) 904 6885</button>
-          </div>
+<div class="actions">
+  <button class="btn primary" type="button" onclick="callLuis(this)">(661) 904 6885</button>
+  <button class="btn secondary" type="button" onclick="openContact('Received a letter','letter_contact')">Send a Message</button>
+</div>
         </div>
       </div>
     </section>
@@ -510,7 +539,7 @@
           <strong>Luis Joaquin Colondres</strong>
           <span>Construction and Project Management for Property Owners</span>
           
-        </div>
+        </div>  
 
         <div class="about-copy">
           <p class="eyebrow">About Luis</p>
