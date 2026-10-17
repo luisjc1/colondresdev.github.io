@@ -102,7 +102,7 @@
     .about-monogram{font-family:Georgia,"Times New Roman",serif;font-size:5.2rem;line-height:1;color:var(--accent);margin-bottom:auto}
     .about-identity strong{font-size:1.15rem}
     .about-identity span{color:var(--text);font-size:.9rem}
-    .photo-note{margin-top:14px!important;font-size:.78rem;color:var(--text)!important}
+    
     .about-copy h3{font-family:Georgia,"Times New Roman",serif;font-size:2rem;font-weight:500;line-height:1.15;margin:0 0 16px}
     .about-copy p{color:var(--text)}
 
@@ -264,14 +264,17 @@
     .legal{max-width:700px}
     .mobile-bar{display:none}
 
-    @media(max-width:900px){
-      nav .nav-button:not(.nav-call){display:none}
-      .hero-grid,.offer,.split,.contact-grid,.experience-layout,.case-card,.about-layout{grid-template-columns:1fr}
-      .issues{grid-template-columns:1fr 1fr}
-      .trust-grid{grid-template-columns:1fr 1fr}
-      .experience-intro{max-width:760px}
-      .about-identity{min-height:260px}
-    }
+    @media(max-width:1060px){
+  nav .nav-button:not(.nav-call){display:none}
+}
+
+@media(max-width:900px){
+  .hero-grid,.offer,.split,.contact-grid,.experience-layout,.case-card,.about-layout{grid-template-columns:1fr}
+  .issues{grid-template-columns:1fr 1fr}
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .experience-intro{max-width:760px}
+  .about-identity{min-height:260px}
+}
 
     @media(max-width:620px){
       .brand-button span,.nav-call{display:none}
