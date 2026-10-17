@@ -73,6 +73,39 @@
     .trust-grid div{padding:18px;text-align:center;font-size:.89rem;font-weight:800;border-right:1px solid var(--line)}
     .trust-grid div:last-child{border-right:0}
 
+    .experience-section{background:#fff}
+    .experience-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:44px;align-items:start}
+    .experience-intro{max-width:520px}
+    .experience-intro p{color:var(--text)}
+    .experience-proof{border:1px solid var(--line);border-radius:16px;background:var(--soft);padding:26px}
+    .experience-proof h3{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;font-weight:500;margin-bottom:18px}
+    .project-groups{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .project-group h4{margin:0 0 10px;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+    .project-list{list-style:none;padding:0;margin:0}
+    .project-list li{padding:8px 0;border-bottom:1px solid rgba(23,32,42,.1);font-weight:700;font-size:.94rem}
+    .project-list li:last-child{border-bottom:0}
+    .experience-disclaimer{margin:22px 0 0;color:var(--text);font-size:.78rem;line-height:1.5}
+
+    .case-section{padding-top:10px}
+    .case-card{display:grid;grid-template-columns:.72fr 1.28fr;gap:38px;border:1px solid var(--line);border-radius:18px;padding:34px;background:#fff}
+    .case-label{background:var(--ink);color:#fff;border-radius:14px;padding:26px;align-self:stretch}
+    .case-label .eyebrow{color:#d8b57e}
+    .case-label h3{font-family:Georgia,"Times New Roman",serif;font-size:1.8rem;font-weight:500;line-height:1.12;margin-bottom:14px}
+    .case-label p{color:#d6dce1;margin:0}
+    .case-body p{color:var(--text)}
+    .case-questions{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:22px 0}
+    .case-question{border-top:1px solid var(--line);padding-top:10px;font-weight:800}
+    .case-purpose{margin:0;padding:16px 18px;background:var(--soft);border-radius:10px;color:var(--ink)!important;font-weight:700}
+
+    .about-layout{display:grid;grid-template-columns:.66fr 1.34fr;gap:42px;align-items:start}
+    .about-identity{border:1px solid var(--line);border-radius:18px;padding:30px;background:linear-gradient(180deg,#f8f5ef,#fff);min-height:320px;display:flex;flex-direction:column;justify-content:flex-end}
+    .about-monogram{font-family:Georgia,"Times New Roman",serif;font-size:5.2rem;line-height:1;color:var(--accent);margin-bottom:auto}
+    .about-identity strong{font-size:1.15rem}
+    .about-identity span{color:var(--text);font-size:.9rem}
+    .photo-note{margin-top:14px!important;font-size:.78rem;color:var(--text)!important}
+    .about-copy h3{font-family:Georgia,"Times New Roman",serif;font-size:2rem;font-weight:500;line-height:1.15;margin:0 0 16px}
+    .about-copy p{color:var(--text)}
+
     section{padding:70px 0}
     .alt{background:var(--soft)}
     .section-head{max-width:760px;margin-bottom:32px}
@@ -233,16 +266,20 @@
 
     @media(max-width:900px){
       nav .nav-button:not(.nav-call){display:none}
-      .hero-grid,.offer,.split,.contact-grid{grid-template-columns:1fr}
+      .hero-grid,.offer,.split,.contact-grid,.experience-layout,.case-card,.about-layout{grid-template-columns:1fr}
       .issues{grid-template-columns:1fr 1fr}
       .trust-grid{grid-template-columns:1fr 1fr}
+      .experience-intro{max-width:760px}
+      .about-identity{min-height:260px}
     }
 
     @media(max-width:620px){
       .brand-button span,.nav-call{display:none}
       .hero{padding:54px 0 48px}
-      .issues,.offer-list,.trust-grid{grid-template-columns:1fr}
+      .issues,.offer-list,.trust-grid,.project-groups,.case-questions{grid-template-columns:1fr}
       .trust-grid div{text-align:left;border-right:0;border-bottom:1px solid var(--line)}
+      .experience-proof,.case-card,.about-identity{padding:22px}
+      .case-label{padding:22px}
       section{padding:54px 0}
       .mobile-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line)}
       .mobile-action{min-height:58px;display:flex;align-items:center;justify-content:center;border:0;background:#fff;color:var(--ink);font-weight:900;cursor:pointer}
@@ -269,6 +306,7 @@
 
       <nav aria-label="Primary navigation">
         <button class="nav-button" type="button" onclick="goToSection('help')">How I Help</button>
+        <button class="nav-button" type="button" onclick="goToSection('experience')">Experience</button>
         <button class="nav-button" type="button" onclick="goToSection('review','review_click')">$299 Review</button>
         <button class="nav-button" type="button" onclick="goToSection('about')">About Luis</button>
         <button class="nav-button" type="button" onclick="goToSection('letter','letter_click')">Received a Letter?</button>
@@ -316,6 +354,45 @@
       </div>
     </div>
 
+    <section class="experience-section" id="experience">
+      <div class="wrap experience-layout">
+        <div class="experience-intro">
+          <p class="eyebrow">Selected construction experience</p>
+          <h2>Experience behind the advice.</h2>
+          <p>Before offering independent guidance directly to property owners, I spent more than 25 years working in construction and project management from both the contractor side and the owner side.</p>
+          <p>That background includes public education, higher education, athletics, civic facilities and major venue construction, with hands on responsibility for contracts, cost, schedule, field coordination, documentation, changes, inspections and closeout.</p>
+        </div>
+
+        <div class="experience-proof">
+          <h3>Selected project experience includes</h3>
+          <div class="project-groups">
+            <div class="project-group">
+              <h4>Education and athletics</h4>
+              <ul class="project-list">
+                <li>Garfield High School</li>
+                <li>Roosevelt High School</li>
+                <li>Lawndale High School</li>
+                <li>Los Angeles Valley College</li>
+                <li>Pierce College</li>
+                <li>UCLA Pauley Pavilion</li>
+                <li>UC San Diego RIMAC</li>
+                <li>USC Galen Center</li>
+              </ul>
+            </div>
+            <div class="project-group">
+              <h4>Civic and major venues</h4>
+              <ul class="project-list">
+                <li>Pitchess Detention Center</li>
+                <li>Dodger Stadium</li>
+                <li>Angel Stadium</li>
+              </ul>
+            </div>
+          </div>
+          <p class="experience-disclaimer">Project names describe Luis Colondres's professional construction experience. No affiliation, sponsorship or endorsement by the listed organizations is implied.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="help">
       <div class="wrap">
         <div class="section-head">
@@ -331,6 +408,29 @@
           <article class="issue"><h3>The documents do not match</h3><p>Identify differences between proposals, contracts, plans and changes.</p></article>
           <article class="issue"><h3>A permit or inspection issue appears</h3><p>Understand how it may affect the owner's next decision.</p></article>
           <article class="issue"><h3>You simply want another opinion</h3><p>If the information appears properly aligned, I will tell you that too.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="wrap">
+        <div class="case-card">
+          <div class="case-label">
+            <p class="eyebrow">Illustrative example</p>
+            <h3>An owner receives a substantial change order.</h3>
+            <p>The decision is not simply whether the price feels reasonable. The first question is what the project documents actually support.</p>
+          </div>
+
+          <div class="case-body">
+            <p>I would compare the proposed change with the original scope, proposal, contract documents, prior changes and available supporting information before the owner approves additional money.</p>
+            <div class="case-questions">
+              <div class="case-question">What actually changed?</div>
+              <div class="case-question">Was any of this already included?</div>
+              <div class="case-question">What work is genuinely new?</div>
+              <div class="case-question">What supports the cost and schedule impact?</div>
+            </div>
+            <p class="case-purpose">The objective is not to create conflict. It is to help the owner understand the decision before additional money is committed.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -399,17 +499,23 @@
     </section>
 
     <section id="about">
-      <div class="wrap split">
-        <div class="section-head">
-          <p class="eyebrow">About Luis</p>
-          <h2>More than 25 years seeing construction from both sides of the table.</h2>
-          <p>I have worked in construction and project management from both the contractor side and the owner side.</p>
+      <div class="wrap about-layout">
+        <!-- PHOTO SLOT: Replace this identity card with a real professional photo of Luis when one is available. -->
+        <div class="about-identity" aria-label="Luis Joaquin Colondres">
+          <div class="about-monogram" aria-hidden="true">LC</div>
+          <p class="eyebrow">Independent owner side guidance</p>
+          <strong>Luis Joaquin Colondres</strong>
+          <span>Construction and Project Management for Property Owners</span>
+          <p class="photo-note">A real professional photo can replace this panel when available. No stock project imagery is used.</p>
         </div>
 
-        <div>
-          <p>That experience includes contracts, project documentation, cost and schedule control, changes, contractor coordination, inspections, field conditions, payment issues and project closeout.</p>
+        <div class="about-copy">
+          <p class="eyebrow">About Luis</p>
+          <h2>More than 25 years seeing construction from both sides of the table.</h2>
+          <h3>Experience on both sides of the table matters.</h3>
+          <p>I have spent decades working with contracts, contractors, owners, consultants, inspectors, schedules, costs, project documentation and field conditions.</p>
+          <p>That experience includes contract administration, cost and schedule control, changes, contractor coordination, inspections, payment issues and project closeout.</p>
           <p>I now apply that experience directly for property owners who want an experienced, independent perspective before making important construction decisions.</p>
-          <p><strong>Luis Joaquin Colondres</strong><br>Construction and Project Management for Property Owners</p>
           <p>
             <button class="plain-action" type="button" onclick="callLuis(this)">(661) 904 6885</button><br>
             <span>ljc@colondresdev.com</span>
